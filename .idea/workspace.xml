@@ -7,21 +7,53 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ec1f2385-2dc6-490f-98db-0252c283a594" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/login.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/register.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nuist/controller/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nuist/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nuist/dao/RegisterDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nuist/dao/UserDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nuist/service/RegisterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nuist/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nuist/service/impl/RegisterServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nuist/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nuist/controller/AccountController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nuist/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nuist/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nuist/dao/AccountDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nuist/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nuist/dao/UserDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nuist/domain/Account.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nuist/domain/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nuist/domain/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nuist/interceptor/SystemInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nuist/interceptor/SystemInterceptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nuist/service/AccountService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nuist/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nuist/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nuist/service/impl/AccountServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nuist/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nuist/service/impl/UserServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resource/springMVC.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resource/springMVC.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/applicationContext.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/applicationContext.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/nuist/controller/RegisterController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/success.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/success.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/register.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/register.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/testMybatis.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/testMybatis.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/nuist/controller/AccountController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/nuist/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/nuist/controller/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/nuist/dao/AccountDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/nuist/dao/RegisterDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/nuist/domain/Account.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/nuist/domain/Register.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/nuist/interceptor/SystemInterceptor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/nuist/interceptor/SystemInterceptor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/nuist/service/AccountService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/nuist/service/RegisterService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/nuist/service/impl/AccountServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/nuist/service/impl/RegisterServiceImpl.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/springMVC.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/springMVC.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/applicationContext.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/applicationContext.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/nuist/controller/RegisterController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/nuist/controller/AccountController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/nuist/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/nuist/controller/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/nuist/dao/AccountDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/nuist/dao/RegisterDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/nuist/domain/Account.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/nuist/domain/Register.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/nuist/interceptor/SystemInterceptor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/nuist/interceptor/SystemInterceptor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/nuist/service/AccountService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/nuist/service/RegisterService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/nuist/service/impl/AccountServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/nuist/service/impl/RegisterServiceImpl.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/springMVC.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/springMVC.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/pages/success.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/pages/success.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/ssm/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/ssm/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ssm/login.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ssm/register.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/testMybatis.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/testMybatis.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -34,8 +66,8 @@
       <list>
         <option value="spring-beans.schema" />
         <option value="Interface" />
-        <option value="Class" />
         <option value="Jsp File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -65,7 +97,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="D:/Program Files/Git/bin/git.exe" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../大四/毕业论文/项目借鉴/forum-master" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -77,8 +109,8 @@
       <recent name="E:\Study\ssm\SSM\src\main\resource" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\Study\ssm\SSM\src\main\webapp" />
       <recent name="E:\Study\ssm\SSM\src\main\webapp\WEB-INF\pages" />
+      <recent name="E:\Study\ssm\SSM\src\main\webapp" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -350,7 +382,7 @@
       <workItem from="1615283310805" duration="22398000" />
       <workItem from="1615903137802" duration="12917000" />
       <workItem from="1616219815580" duration="16080000" />
-      <workItem from="1616739000110" duration="15998000" />
+      <workItem from="1616739000110" duration="40422000" />
     </task>
     <servers />
   </component>

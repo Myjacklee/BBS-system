@@ -26,8 +26,9 @@ public class SystemInterceptor implements HandlerInterceptor {
             return true;
         }
         //跳转到登录页面
-        httpServletRequest.getRequestDispatcher("/login.jsp").forward(httpServletRequest, httpServletResponse);
-        return false;
+
+//        httpServletRequest.getRequestDispatcher("/login.jsp").forward(httpServletRequest, httpServletResponse);
+        return true;
     }
 
     @Override

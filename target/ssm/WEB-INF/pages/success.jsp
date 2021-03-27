@@ -11,6 +11,6 @@
     <title>成功页面</title>
 </head>
 <body>
-<h1>成功保存...</h1>
+<h1>成功页面</h1>
 </body>
 </html>

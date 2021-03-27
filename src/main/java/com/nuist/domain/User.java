@@ -9,7 +9,7 @@ import java.util.Date;
  * @description:用户信息
  * @version:
  */
-public class Register implements Serializable {
+public class User implements Serializable {
     private String email;
     private String password;
     private String username;
@@ -90,5 +90,20 @@ public class Register implements Serializable {
 
     public void setSign_date(Date sign_date) {
         this.sign_date = sign_date;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", username='" + username + '\'' +
+                ", nickname='" + nickname + '\'' +
+                ", school='" + school + '\'' +
+                ", college='" + college + '\'' +
+                ", studentClass='" + studentClass + '\'' +
+                ", uid='" + uid + '\'' +
+                ", sign_date=" + sign_date +
+                '}';
     }
 }

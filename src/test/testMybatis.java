@@ -1,14 +1,10 @@
-import com.nuist.dao.AccountDao;
-import com.nuist.domain.Account;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.Test;
 
-import javax.annotation.Resource;
 import java.io.InputStream;
-import java.util.List;
 
 /**
  * @author LiZonggen
@@ -26,13 +22,13 @@ public class testMybatis {
         //创建SqlSession对象
         SqlSession session=factory.openSession();
         //获取到代理对象
-        AccountDao dao=session.getMapper(AccountDao.class);
+//        AccountDao dao=session.getMapper(AccountDao.class);
         //查询所有数据
-        List<Account> list= dao.findAll();
-        for(Account item:list){
-            System.out.println(item);
-        }
-        in.close();;
+//        List<Account> list= dao.findAll();
+//        for(Account item:list){
+//            System.out.println(item);
+//        }
+//        in.close();;
     }
 
 }

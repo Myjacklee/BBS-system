@@ -1,7 +1,7 @@
 package com.nuist.service.impl;
 
 import com.nuist.dao.UserDao;
-import com.nuist.domain.Register;
+import com.nuist.domain.User;
 import com.nuist.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,14 +19,22 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserDao userDao;
     @Override
-    public Integer registerCheck(Register register) {
-        return userDao.registerCheck(register);
+    public Integer registerCheck(User user) {
+        return userDao.registerCheck(user);
     }
 
     @Override
-    public void register(Register register) {
-        register.setSign_date(new Date());
-        userDao.register(register);
+    public Integer register(User user) {
+        user.setSign_date(new Date());
+        Integer result=userDao.register(user);
+        return result;
     }
+
+    @Override
+    public User login(User user) {
+        User result=userDao.login(user);
+        return result;
+    }
+
 
 }

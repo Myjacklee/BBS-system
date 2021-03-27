@@ -17,11 +17,10 @@
                     url:"user/register",
                     contentType:"application/json;charset=utf-8",
                     type:"post",
-                    data:'{"email":"2251222797@qq.com","password":"lizonggen","username":"lufeng","nickname":"joker","school":"南京信息工程大学","college":"计算机与软件学院","studentClass":"17网工1班"}',
+                    data:'{"email":"1273202743@qq.com","password":"lizonggen","username":"lufeng","nickname":"joker","school":"南京信息工程大学","college":"计算机与软件学院","studentClass":"17网工1班"}',
                     dataType:"json",
                     success:function(data){
                         alert(data.res);
-
                     }
                 });
             });
@@ -29,7 +28,6 @@
     </script>
 </head>
 <body>
-<a href="account/findAll">查询所有</a>
 
 <form action="account/save" method="post">
     <input type="text" name="name"/>
@@ -37,5 +35,6 @@
     <input type="submit" value="提交"/>
 </form>
 <button id="btn">点击我测试</button>
+<a href="user/goLogin">点击我跳转到登录界面</a>
 </body>
 </html>
