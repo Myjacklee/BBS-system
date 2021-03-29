@@ -4,7 +4,6 @@ import com.nuist.domain.User;
 import com.nuist.domain.RegisterCheckRes;
 import com.nuist.exception.SysException;
 import com.nuist.service.UserService;
-import netscape.security.UserTarget;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,18 +24,44 @@ import javax.servlet.http.HttpSession;
 public class UserController {
     @Autowired
     private UserService userService;
+    @RequestMapping(path = "/goRegister")
+    public String goRegister(){
+        return "register";
+    }
+    @RequestMapping(path = "/goLogin")
+    public String goLogin(HttpSession session){
+        System.out.println(session);
+        return "login";
+    }
 
     @RequestMapping(path="/register")
+    public String register(User user,Model model)  throws SysException{
+
+        try{
+            if(user.isEmpty()){
+                return "register";
+            } else if(userService.registerCheck(user)==0){
+                Integer result= userService.register(user);
+                return "login";
+
+            }else{
+                model.addAttribute("user",user);
+                model.addAttribute("message","该邮箱已被注册账号，请更换邮箱注册");
+                return "register";
+            }
+        }catch (Exception e){
+           throw new SysException("注册出现错误，请联系系统管理员");
+        }
+    }
+    @RequestMapping(path="/checkEmail")
     public @ResponseBody
-    RegisterCheckRes register(@RequestBody User user)  throws SysException{
+    RegisterCheckRes register2(@RequestBody User user)  throws SysException{
         RegisterCheckRes rcs=new RegisterCheckRes();
         try{
-            if(userService.registerCheck(user)==0){
-                Integer result= userService.register(user);
-                System.out.println("uid:"+result);
-                rcs.setRes("成功插入,当前用户的uid为："+ user.getUid());
+            if(userService.registerCheck(user)!=0){
+                rcs.setRes("该邮箱已被注册，请跟换邮箱注册");
             }else{
-                rcs.setRes("已有数据");
+                rcs.setRes("邮箱未被注册，可以正常注册");
             }
         }catch (Exception e){
             rcs.setRes("注册出现错误，请联系系统管理员");
@@ -47,23 +72,25 @@ public class UserController {
 
     @RequestMapping(path = "/logout")
     public String logout(HttpSession session) {
+       // session.removeAttribute("uid");
+//        销毁了再次浏览还是会创建新的session
         session.invalidate();
-        return "redirect:login.jsp";
-    }
-
-    @RequestMapping(path = "/goLogin")
-    public String goLogin(HttpSession session){
-        System.out.println(session);
         return "login";
     }
+
+
     @RequestMapping(path = "/login")
     public String login(User user, HttpSession session, Model model){
+        System.out.println(user);
+        if(user.isEmpty()){
+            return "login";
+        }
         User result=userService.login(user);
         if(result!=null){
             session.setAttribute("uid",result.getUid());
             session.setAttribute("user",result);
             System.out.println(result);
-            return "success";
+            return "redirect:/index/home";
         }else{
             model.addAttribute("message","输入的账号或密码错误，请重新输入");
             model.addAttribute("email",user.getEmail());

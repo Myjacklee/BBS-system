@@ -18,12 +18,31 @@
 <!--    配置拦截器-->
     <mvc:interceptors>
         <mvc:interceptor>
-            <mvc:mapping path="/**"/>
+            <mvc:mapping path="/user/**"/>
+            <mvc:mapping path="/index/**"/>
+            <mvc:exclude-mapping path="/user/goRegister"/>
+            <mvc:exclude-mapping path="/user/register"/>
+            <mvc:exclude-mapping path="/user/goLogin"/>
+            <mvc:exclude-mapping path="/user/login"/>
+            <mvc:exclude-mapping path="/user/checkEmail"/>
+            <mvc:exclude-mapping path="/js/**"/>
+            <mvc:exclude-mapping path="/css/**"/>
+            <mvc:exclude-mapping path="/images/**"/>
             <bean id="systemInterceptor" class="com.nuist.interceptor.SystemInterceptor"></bean>
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/admin/**"/>
+            <mvc:exclude-mapping path="/admin/login"/>
+            <mvc:exclude-mapping path="/admin/goLogin"/>
+            <mvc:exclude-mapping path="/js/**"/>
+            <mvc:exclude-mapping path="/css/**"/>
+            <mvc:exclude-mapping path="/images/**"/>
+            <bean id="adminInterceptor" class="com.nuist.interceptor.AdminInterceptor"></bean>
         </mvc:interceptor>
     </mvc:interceptors>
 
     <!--    过滤静态资源-->
+    <mvc:default-servlet-handler/>
     <mvc:resources location="/css/" mapping="/css/**" ></mvc:resources>
     <mvc:resources location="/js/" mapping="/js/**" ></mvc:resources>
     <mvc:resources location="/images/" mapping="/images/**" ></mvc:resources>

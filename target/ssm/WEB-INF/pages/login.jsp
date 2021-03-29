@@ -13,10 +13,12 @@
 <body>
 <h1>登录页面</h1>
 ${message}
-<form method="post" action="login">
+<form method="post" action="${pageContext.request.contextPath}/user/login">
     <input name="email" type="email" value="${email}"><br>
     <input name="password" type="password" value="${password}"><br>
     <input type="submit" value="登录">
 </form>
+<a href="${pageContext.request.contextPath}/user/goRegister">注册页面</a>
+<a href="${pageContext.request.contextPath}/admin/goLogin">管理员登录页面</a>
 </body>
 </html>

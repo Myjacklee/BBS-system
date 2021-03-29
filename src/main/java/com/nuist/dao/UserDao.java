@@ -1,10 +1,9 @@
 package com.nuist.dao;
 
 import com.nuist.domain.User;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.SelectKey;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
+
 
 @Repository
 public interface UserDao {
@@ -16,5 +15,9 @@ public interface UserDao {
 //    查询到的uid被注入到了keyProperty.uid里面，下方函数返回的值是受影响的结果的条数，成功返回1，失败返回0
     public Integer register(User user);
     @Select("select * from user where email=#{email} and password=#{password}")
+//    解决注解开发当中列名和字段名不一致的问题
+    @Results(value = {
+            @Result(column = "class" ,property = "studentClass")
+    })
     public User login(User user);
 }

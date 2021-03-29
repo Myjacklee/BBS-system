@@ -16,18 +16,14 @@ import javax.servlet.http.HttpSession;
 public class SystemInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
-        //如果是登录页面则放行
-        if (httpServletRequest.getRequestURI().indexOf("login") >= 0) {
-            return true;
-        }
         HttpSession session = httpServletRequest.getSession();
         //用户登录了也放行
-        if (session.getAttribute("id") != null) {
+        if (session.getAttribute("uid") != null) {
             return true;
         }
         //跳转到登录页面
 
-//        httpServletRequest.getRequestDispatcher("/login.jsp").forward(httpServletRequest, httpServletResponse);
+        httpServletRequest.getRequestDispatcher("/WEB_INF/pages/login.jsp").forward(httpServletRequest, httpServletResponse);
         return true;
     }
 

@@ -106,4 +106,11 @@ public class User implements Serializable {
                 ", sign_date=" + sign_date +
                 '}';
     }
+    public boolean isEmpty(){
+        if(email==null&&password==null&&username==null&&nickname==null&&school==null&&college==null&&studentClass==null&&uid==null&&sign_date==null){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }
