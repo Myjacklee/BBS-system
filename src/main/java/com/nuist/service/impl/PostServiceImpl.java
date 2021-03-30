@@ -16,7 +16,7 @@ import java.util.List;
  * @description:主页服务层
  * @version:
  */
-@Service("homeService")
+@Service("postService")
 public class PostServiceImpl implements PostService {
     @Autowired
     private PostDao postDao;
@@ -31,23 +31,13 @@ public class PostServiceImpl implements PostService {
         return postDao.addPost(post);
     }
 
-    @Override
-    public List<Board> findAllBoard(Integer postId) {
-        return boardDao.findAllBoard(postId);
-    }
+
 
     @Override
     public Post findPostById(Integer id) {
         return postDao.findPostById(id);
     }
 
-    @Override
-    public Integer addBoard(Board board,Integer bbs_section_id) {
-        if(boardDao.addBoard(board)==1&&postDao.addBoardNum(bbs_section_id)==1){
-            return 1;
-        }else{
-            return 0;
-        }
-    }
+
 
 }

@@ -20,7 +20,7 @@ public class AdminInterceptor implements HandlerInterceptor {
         if(session.getAttribute("admin")!=null){
             return true;
         }
-        httpServletRequest.getRequestDispatcher("/WEB_INF/pages/adminLogin.jsp").forward(httpServletRequest, httpServletResponse);
+        httpServletRequest.getRequestDispatcher("/admin/goLogin").forward(httpServletRequest, httpServletResponse);
         return false;
     }
 

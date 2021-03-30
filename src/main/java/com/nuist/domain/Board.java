@@ -13,6 +13,7 @@ public class Board {
     private Integer board_id;
     private Integer bbs_section_id;
     private String uid;
+    private String nickname;
     private String board_title;
     private String board_content;
     private Timestamp board_create_time;
@@ -72,5 +73,13 @@ public class Board {
 
     public void setLast_reply_time(Timestamp last_reply_time) {
         this.last_reply_time = last_reply_time;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 }

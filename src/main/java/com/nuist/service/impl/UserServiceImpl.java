@@ -14,7 +14,7 @@ import java.util.Date;
  * @description:账号注册实现类
  * @version:
  */
-@Service("registerService")
+@Service("userService")
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserDao userDao;

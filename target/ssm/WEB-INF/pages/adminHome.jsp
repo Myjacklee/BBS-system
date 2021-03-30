@@ -9,7 +9,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>管理员管理界面</title>
 </head>
 <body>
 <h1>管理员管理界面</h1>

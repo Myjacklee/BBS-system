@@ -3,6 +3,7 @@ package com.nuist.controller;
 import com.nuist.domain.Board;
 import com.nuist.domain.Post;
 import com.nuist.domain.User;
+import com.nuist.service.BoardService;
 import com.nuist.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,28 +28,14 @@ import java.util.List;
 public class HomeController {
     @Autowired
     private PostService postService;
+    @Autowired
+    private BoardService boardService;
     @RequestMapping(path = "/home")
     public String goHome(Model model){
         List<Post> list= postService.findAllPost();
         model.addAttribute("postList",list);
         return "home";
     }
-    @RequestMapping(path = "/post/{postId}")
-    public String goPost(Model model, @PathVariable("postId")Integer postId){
-        List<Board> allBoard=postService.findAllBoard(postId);
-        Post post=postService.findPostById(postId);
-        model.addAttribute("allBoard",allBoard);
-        model.addAttribute("post",post);
-        return "post";
-    }
-    @RequestMapping(path = "/addBoard/{postId}")
-    public String addBoard(Board board, @PathVariable("postId") Integer postId, HttpSession session){
-        board.setBbs_section_id(postId);
-        User user=(User)session.getAttribute("user");
-        board.setUid(user.getUid());
-        board.setBoard_create_time(new Timestamp(new Date().getTime()));
-        board.setLast_reply_time(new Timestamp(new Date().getTime()));
-        postService.addBoard(board,postId);
-        return "redirect:/index/post/"+postId;
-    }
+
+
 }

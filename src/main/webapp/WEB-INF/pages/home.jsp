@@ -9,12 +9,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>成功页面</title>
+    <title>BBS系统主界面</title>
 </head>
 <body>
 <h1>主界面</h1>
 <a href="${pageContext.request.contextPath}/user/logout">注销</a>
 <h2>用户信息</h2>
+<p>uid:${sessionScope.user.uid}</p>
 <p>邮箱:${sessionScope.user.email}</p>
 <p>姓名:${sessionScope.user.username}</p>
 <p>昵称:${sessionScope.user.nickname}</p>
@@ -35,7 +36,7 @@
     <c:forEach items="${postList}" var="post">
         <tr>
             <td>${post.bbs_section_id}</td>
-            <td><a href="${pageContext.request.contextPath}/index/post/${post.bbs_section_id}">${post.section_name}</a></td>
+            <td><a href="${pageContext.request.contextPath}/post/${post.bbs_section_id}">${post.section_name}</a></td>
             <td>${post.post_num}</td>
             <td>${post.post_describe}</td>
         </tr>

@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>管理员登录界面</title>
 </head>
 <body>
 <h1>管理员登录界面</h1>

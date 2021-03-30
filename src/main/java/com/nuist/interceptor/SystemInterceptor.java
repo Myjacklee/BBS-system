@@ -23,7 +23,7 @@ public class SystemInterceptor implements HandlerInterceptor {
         }
         //跳转到登录页面
 
-        httpServletRequest.getRequestDispatcher("/WEB_INF/pages/login.jsp").forward(httpServletRequest, httpServletResponse);
+        httpServletRequest.getRequestDispatcher("/user/goLogin").forward(httpServletRequest, httpServletResponse);
         return true;
     }
 
