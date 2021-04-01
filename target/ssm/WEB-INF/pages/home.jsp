@@ -7,13 +7,19 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html>
 <head>
     <title>BBS系统主界面</title>
+    <script src="${pageContext.request.contextPath}/js/jquery-3.4.0.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/serializeJson.js"></script>
+    <script src="${pageContext.request.contextPath}/js/reload.js"></script>
+
 </head>
 <body>
 <h1>主界面</h1>
-<a href="${pageContext.request.contextPath}/user/logout">注销</a>
+<a href="${pageContext.request.contextPath}/user/logout">注销</a><span>  </span>
+<a href="${pageContext.request.contextPath}/manage/home">用户个人信息管理</a>
 <h2>用户信息</h2>
 <p>uid:${sessionScope.user.uid}</p>
 <p>邮箱:${sessionScope.user.email}</p>

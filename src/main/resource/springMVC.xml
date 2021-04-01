@@ -21,7 +21,10 @@
             <mvc:mapping path="/user/**"/>
             <mvc:mapping path="/index/**"/>
             <mvc:mapping path="/board/**"/>
-            <mvc:mapping path="/post/***"/>
+            <mvc:mapping path="/post/**"/>
+            <mvc:mapping path="/reply/**"/>
+            <mvc:mapping path="/comment/**"/>
+            <mvc:mapping path="/manage/**"/>
             <mvc:exclude-mapping path="/user/goRegister"/>
             <mvc:exclude-mapping path="/user/register"/>
             <mvc:exclude-mapping path="/user/goLogin"/>
@@ -32,6 +35,7 @@
             <mvc:exclude-mapping path="/images/**"/>
             <bean id="systemInterceptor" class="com.nuist.interceptor.SystemInterceptor"></bean>
         </mvc:interceptor>
+
         <mvc:interceptor>
             <mvc:mapping path="/admin/**"/>
             <mvc:exclude-mapping path="/admin/login"/>
@@ -44,7 +48,6 @@
     </mvc:interceptors>
 
     <!--    过滤静态资源-->
-    <mvc:default-servlet-handler/>
     <mvc:resources location="/css/" mapping="/css/**" ></mvc:resources>
     <mvc:resources location="/js/" mapping="/js/**" ></mvc:resources>
     <mvc:resources location="/images/" mapping="/images/**" ></mvc:resources>

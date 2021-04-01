@@ -12,13 +12,30 @@ import java.util.Date;
 public class User implements Serializable {
     private String email;
     private String password;
+    private String new_password;
     private String username;
     private String nickname;
     private String school;
     private String college;
     private String studentClass;
-    private String uid;
+    private Integer uid;
     private Date sign_date;
+
+    public String getNew_password() {
+        return new_password;
+    }
+
+    public void setNew_password(String new_password) {
+        this.new_password = new_password;
+    }
+
+    public Integer getUid() {
+        return uid;
+    }
+
+    public void setUid(Integer uid) {
+        this.uid = uid;
+    }
 
     public String getEmail() {
         return email;
@@ -76,13 +93,7 @@ public class User implements Serializable {
         this.studentClass = studentClass;
     }
 
-    public String getUid() {
-        return uid;
-    }
 
-    public void setUid(String uid) {
-        this.uid = uid;
-    }
 
     public Date getSign_date() {
         return sign_date;
@@ -97,15 +108,17 @@ public class User implements Serializable {
         return "User{" +
                 "email='" + email + '\'' +
                 ", password='" + password + '\'' +
+                ", new_password='" + new_password + '\'' +
                 ", username='" + username + '\'' +
                 ", nickname='" + nickname + '\'' +
                 ", school='" + school + '\'' +
                 ", college='" + college + '\'' +
                 ", studentClass='" + studentClass + '\'' +
-                ", uid='" + uid + '\'' +
+                ", uid=" + uid +
                 ", sign_date=" + sign_date +
                 '}';
     }
+
     public boolean isEmpty(){
         if(email==null&&password==null&&username==null&&nickname==null&&school==null&&college==null&&studentClass==null&&uid==null&&sign_date==null){
             return true;

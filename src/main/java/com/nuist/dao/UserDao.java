@@ -20,4 +20,6 @@ public interface UserDao {
             @Result(column = "class" ,property = "studentClass")
     })
     public User login(User user);
+    @Update("update user set password=#{password},username=#{username},nickname=#{nickname},school=#{school},college=#{college},class=#{studentClass} where uid=#{uid}")
+    public Integer updateUser(User user);
 }

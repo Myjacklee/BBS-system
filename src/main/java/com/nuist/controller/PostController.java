@@ -29,16 +29,7 @@ public class PostController {
     private BoardService boardService;
     @Autowired
     private PostService postService;
-    @RequestMapping(path = "/add/{postId}")
-    public String addBoard(Board board, @PathVariable("postId") Integer postId, HttpSession session){
-        board.setBbs_section_id(postId);
-        User user=(User)session.getAttribute("user");
-        board.setUid(user.getUid());
-        board.setBoard_create_time(new Timestamp(new Date().getTime()));
-        board.setLast_reply_time(new Timestamp(new Date().getTime()));
-        boardService.addBoard(board,postId);
-        return "redirect:/post/"+postId;
-    }
+
     @RequestMapping(path = "/{postId}")
     public String goPost(Model model, @PathVariable("postId")Integer postId){
         List<Board> allBoard=boardService.findAllBoard(postId);

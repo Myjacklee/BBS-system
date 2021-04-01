@@ -1,13 +1,10 @@
 package com.nuist.service.impl;
 
 import com.nuist.dao.AdminDao;
-import com.nuist.dao.PostDao;
 import com.nuist.domain.Admin;
-import com.nuist.domain.Post;
 import com.nuist.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.ResponseStatus;
 
 /**
  * @author LiZonggen

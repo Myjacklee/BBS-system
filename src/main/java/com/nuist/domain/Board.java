@@ -1,5 +1,6 @@
 package com.nuist.domain;
 
+import java.io.Serializable;
 import java.sql.Time;
 import java.sql.Timestamp;
 
@@ -9,15 +10,48 @@ import java.sql.Timestamp;
  * @description:主题帖实体类
  * @version:
  */
-public class Board {
+public class Board implements Serializable {
     private Integer board_id;
     private Integer bbs_section_id;
-    private String uid;
+    private String section_name;
+    private Integer uid;
     private String nickname;
     private String board_title;
     private String board_content;
+    private Integer board_reply_num;
     private Timestamp board_create_time;
     private Timestamp last_reply_time;
+
+    public String getSection_name() {
+        return section_name;
+    }
+
+    public void setSection_name(String section_name) {
+        this.section_name = section_name;
+    }
+
+    @Override
+    public String toString() {
+        return "Board{" +
+                "board_id=" + board_id +
+                ", bbs_section_id=" + bbs_section_id +
+                ", uid='" + uid + '\'' +
+                ", nickname='" + nickname + '\'' +
+                ", board_title='" + board_title + '\'' +
+                ", board_content='" + board_content + '\'' +
+                ", board_reply_num=" + board_reply_num +
+                ", board_create_time=" + board_create_time +
+                ", last_reply_time=" + last_reply_time +
+                '}';
+    }
+
+    public Integer getBoard_reply_num() {
+        return board_reply_num;
+    }
+
+    public void setBoard_reply_num(Integer board_reply_num) {
+        this.board_reply_num = board_reply_num;
+    }
 
     public Integer getBoard_id() {
         return board_id;
@@ -35,11 +69,11 @@ public class Board {
         this.bbs_section_id = bbs_section_id;
     }
 
-    public String getUid() {
+    public Integer getUid() {
         return uid;
     }
 
-    public void setUid(String uid) {
+    public void setUid(Integer uid) {
         this.uid = uid;
     }
 

@@ -9,4 +9,6 @@ public interface UserService {
     public Integer register(User user);
     //进行登录
     public User login(User user);
+    //对用户数据进行更新
+    public Integer updateUser(User user);
 }

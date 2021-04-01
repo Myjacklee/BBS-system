@@ -1,13 +1,15 @@
 package com.nuist.dao;
 
-import com.nuist.domain.Board;
 import com.nuist.domain.Post;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
-import sun.rmi.server.InactiveGroupException;
 
 import java.util.List;
-
+/**
+* @Author: LiZonggen
+* @Date: 2021/4/1
+* @Description: 用户的帖子持久层接口
+*/
 @Repository
 public interface PostDao {
     @Select("select * from post")
@@ -18,5 +20,5 @@ public interface PostDao {
     @Select("select * from post where bbs_section_id=#{id}")
     public Post findPostById(Integer id);
     @Update("update post set post_num=post_num+1 where bbs_section_id=#{bbs_section_id}")
-    public Integer addBoardNum(Integer bbs_section_num);
+    public Integer addPostNum(Integer bbs_section_num);
 }

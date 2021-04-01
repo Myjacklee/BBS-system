@@ -11,10 +11,32 @@ import java.sql.Timestamp;
 public class Reply {
     private Integer reply_id;
     private Integer board_id;
-    private String uid;
+    private Integer uid;
     private String nickname;
     private String reply_content;
     private Timestamp reply_time;
+    private Integer floor;
+
+    @Override
+    public String toString() {
+        return "Reply{" +
+                "reply_id=" + reply_id +
+                ", board_id=" + board_id +
+                ", uid='" + uid + '\'' +
+                ", nickname='" + nickname + '\'' +
+                ", reply_content='" + reply_content + '\'' +
+                ", reply_time=" + reply_time +
+                ", floor=" + floor +
+                '}';
+    }
+
+    public Integer getFloor() {
+        return floor;
+    }
+
+    public void setFloor(Integer floor) {
+        this.floor = floor;
+    }
 
     public Integer getReply_id() {
         return reply_id;
@@ -32,11 +54,11 @@ public class Reply {
         this.board_id = board_id;
     }
 
-    public String getUid() {
+    public Integer getUid() {
         return uid;
     }
 
-    public void setUid(String uid) {
+    public void setUid(Integer uid) {
         this.uid = uid;
     }
 
