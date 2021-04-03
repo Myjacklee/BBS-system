@@ -28,6 +28,8 @@
 <p>学校:${sessionScope.user.school}</p>
 <p>学院:${sessionScope.user.college}</p>
 <p>班级:${sessionScope.user.studentClass}</p>
+<h2><a href="${pageContext.request.contextPath}/friend/goFriend">好友模块</a></h2>
+
 <h2>版块信息</h2>
 <table>
     <thead>

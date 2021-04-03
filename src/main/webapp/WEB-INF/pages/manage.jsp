@@ -31,6 +31,7 @@
                         contentType:"application/json;charset=UTF-8",
                         type:"post",
                         data:inputString,
+                        dateType:"json",
                         success:function(data){
                             if(data=="success"){
                                 alert("更新用户信息成功");

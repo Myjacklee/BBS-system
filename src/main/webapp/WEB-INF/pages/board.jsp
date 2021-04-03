@@ -23,6 +23,7 @@
                     contentType:"application/json;charset=UTF-8",
                     type:"post",
                     data:inputString,
+                    dateType:"json",
                     success:function(data){
                         if(data.message=="success"){
                             alert("回帖成功");

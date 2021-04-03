@@ -53,7 +53,7 @@ public class ManageController {
             user.setEmail(oldUser.getEmail());
             user.setUid(oldUser.getUid());
             //如果用户没有输入新密码，则不用新密码覆盖旧密码
-            if(user.getNew_password()!=null){
+            if(user.getNew_password()!=null&&user.getNew_password().length()!=0){
                 user.setPassword(user.getNew_password());
             }
             if(1==userService.updateUser(user)){

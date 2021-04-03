@@ -25,6 +25,7 @@
             <mvc:mapping path="/reply/**"/>
             <mvc:mapping path="/comment/**"/>
             <mvc:mapping path="/manage/**"/>
+            <mvc:mapping path="/friend/**"/>
             <mvc:exclude-mapping path="/user/goRegister"/>
             <mvc:exclude-mapping path="/user/register"/>
             <mvc:exclude-mapping path="/user/goLogin"/>

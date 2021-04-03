@@ -21,7 +21,7 @@
     <bean id="SqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"></property>
     </bean>
-<!--    配置AccountDao接口所在的包-->
+<!--    配置Dao接口所在的包-->
     <bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="com.nuist.dao"></property>
     </bean>
