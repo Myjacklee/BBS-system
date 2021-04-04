@@ -97,7 +97,7 @@ public class UserController {
             session.setAttribute("uid",result.getUid());
             session.setAttribute("user",result);
             System.out.println(result);
-            return "redirect:/index/home";
+            return "redirect:/home/index";
         }else{
             model.addAttribute("message","输入的账号或密码错误，请重新输入");
             model.addAttribute("email",user.getEmail());

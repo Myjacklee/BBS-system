@@ -19,7 +19,7 @@
     <mvc:interceptors>
         <mvc:interceptor>
             <mvc:mapping path="/user/**"/>
-            <mvc:mapping path="/index/**"/>
+            <mvc:mapping path="/home/**"/>
             <mvc:mapping path="/board/**"/>
             <mvc:mapping path="/post/**"/>
             <mvc:mapping path="/reply/**"/>

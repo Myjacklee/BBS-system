@@ -31,6 +31,10 @@ public class BoardController {
     @RequestMapping(path = "{boardId}")
     public String showBoard(@PathVariable("boardId")Integer id, Model model){
         Board board= boardService.findBoardById(id);
+        if(board==null){
+            model.addAttribute("message","访问的帖子不存在");
+            return "error";
+        }
         model.addAttribute("board",board);
         List<Reply> allReply=replyService.findAllReply(id);
         model.addAttribute("allReply",allReply);
@@ -55,7 +59,8 @@ public class BoardController {
     @RequestMapping("/delete/{boardId}")
     public String deleteBoard(@PathVariable("boardId") Integer boardId,HttpSession session){
         Integer uid=(Integer) session.getAttribute("uid");
-
-        return "";
+        System.out.println(uid);
+        boardService.deleteBoardByBoardId(uid,boardId);
+        return "redirect:/manage/home";
     }
 }

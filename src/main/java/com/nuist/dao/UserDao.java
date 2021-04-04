@@ -22,4 +22,6 @@ public interface UserDao {
     public User login(User user);
     @Update("update user set password=#{password},username=#{username},nickname=#{nickname},school=#{school},college=#{college},class=#{studentClass} where uid=#{uid}")
     public Integer updateUser(User user);
+    @Select("select nickname,school,college,uid,class as studentClass from user where uid=#{uid}")
+    public User findUserByUid(Integer uid);
 }

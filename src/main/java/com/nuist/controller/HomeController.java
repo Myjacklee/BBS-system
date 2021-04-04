@@ -5,6 +5,8 @@ import com.nuist.domain.Post;
 import com.nuist.domain.User;
 import com.nuist.service.BoardService;
 import com.nuist.service.PostService;
+import com.nuist.service.UserService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,17 +26,33 @@ import java.util.List;
  * @version:
  */
 @Controller("homeController")
-@RequestMapping(path = "/index")
+@RequestMapping(path = "/home")
 public class HomeController {
     @Autowired
     private PostService postService;
     @Autowired
+    private UserService userService;
+    @Autowired
     private BoardService boardService;
-    @RequestMapping(path = "/home")
+    @RequestMapping(path = "/index")
     public String goHome(Model model){
         List<Post> list= postService.findAllPost();
         model.addAttribute("postList",list);
         return "home";
+    }
+    @RequestMapping(path = "/{uid}")
+    public String visitUserHome(@PathVariable("uid") Integer uid,Model model){
+        User user= userService.findUserByUid(uid);
+        if(user==null) {
+            model.addAttribute("message", "访问的页面不存在");
+            return "error";
+        }else{
+            List<Board> allBoard=boardService.findBoardByUid(uid);
+            model.addAttribute("allBoard",allBoard);
+            model.addAttribute("user",user);
+            return "userHomeDisplay";
+        }
+
     }
 
 

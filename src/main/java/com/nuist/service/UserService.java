@@ -11,4 +11,6 @@ public interface UserService {
     public User login(User user);
     //对用户数据进行更新
     public Integer updateUser(User user);
+    //按uid进行查找用户
+    public User findUserByUid(Integer uid);
 }
