@@ -10,7 +10,12 @@
 <html>
 <head>
     <title>用户主页展示界面</title>
+    <script src="${pageContext.request.contextPath}/js/jquery-3.4.0.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/navbar.css">
 </head>
+<%@include file="navbar.jsp"%>
 <body>
 <h1>用户个人主页游客访问界面</h1>
 <h2>该用户的基本信息</h2>

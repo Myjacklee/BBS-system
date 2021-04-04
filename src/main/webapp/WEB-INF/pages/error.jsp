@@ -9,7 +9,12 @@
 <html>
 <head>
     <title>错误页面</title>
+    <script src="${pageContext.request.contextPath}/js/jquery-3.4.0.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/navbar.css">
 </head>
+<%@include file="navbar.jsp"%>
 <body>
 <h1>${message}</h1>
 </body>

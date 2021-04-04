@@ -50,6 +50,7 @@ public class BoardServiceImpl implements BoardService {
     public Integer deleteBoardByBoardId(Integer uid, Integer boardId) {
         replyDao.deleteReplyByBoardId(boardId);
         if(boardDao.deleteBoardByBoardId(uid,boardId)==1){
+
             return 1;
         }else{
             return 0;

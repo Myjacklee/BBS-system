@@ -32,16 +32,58 @@ public class ManageController {
     private ReplyService replyService;
     @Autowired
     private UserService userService;
+    /**
+    * @Author: LiZonggen
+    * @Date: 2021/4/4
+    * @Description: 个人信息更改
+    * @param model:
+* @param session:
+    * @return: java.lang.String
+    */
     @RequestMapping(path = "/home")
     public String goUserHome(Model model, HttpSession session){
         User user=(User)session.getAttribute("user");
         model.addAttribute("userInformation",user);
+        model.addAttribute("page",1);
+        return "manageUserInformation";
+    }
+    /**
+    * @Author: LiZonggen
+    * @Date: 2021/4/4
+    * @Description: 个人帖子管理
+    * @param model:
+* @param session:
+    * @return: java.lang.String
+    */
+    @RequestMapping(path = "/home/boardManage")
+    public String goUserHomeBoardManage(Model model, HttpSession session){
+        User user=(User)session.getAttribute("user");
         List<Board> allBoard=boardService.findBoardByUid(user.getUid());
         model.addAttribute("allBoard",allBoard);
+        model.addAttribute("page",2);
+        model.addAttribute("userInformation",user);
+
+        return "manageBoard";
+    }
+    /**
+    * @Author: LiZonggen
+    * @Date: 2021/4/4
+    * @Description: 个人帖子回复查看
+    * @param model:
+* @param session:
+    * @return: java.lang.String
+    */
+    @RequestMapping(path = "/home/replayManage")
+    public String goUserHomeReplyManage(Model model, HttpSession session){
+        User user=(User)session.getAttribute("user");
         List<Reply> allReply=replyService.findReplyByUid(user.getUid());
         model.addAttribute("allReply",allReply);
-        return "manage";
+        model.addAttribute("page",3);
+        model.addAttribute("userInformation",user);
+
+        return "manageBoardReply";
     }
+
     @RequestMapping(path = "/updateUser")
     @ResponseBody
     public String updateUser(@RequestBody User user,HttpSession session){

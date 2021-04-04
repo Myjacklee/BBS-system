@@ -11,18 +11,30 @@ import java.sql.Timestamp;
 public class Reply {
     private Integer reply_id;
     private Integer board_id;
+    private String board_title;
     private Integer uid;
     private String nickname;
     private String reply_content;
     private Timestamp reply_time;
     private Integer floor;
 
+
+
+    public String getBoard_title() {
+        return board_title;
+    }
+
+    public void setBoard_title(String board_title) {
+        this.board_title = board_title;
+    }
+
     @Override
     public String toString() {
         return "Reply{" +
                 "reply_id=" + reply_id +
                 ", board_id=" + board_id +
-                ", uid='" + uid + '\'' +
+                ", board_title='" + board_title + '\'' +
+                ", uid=" + uid +
                 ", nickname='" + nickname + '\'' +
                 ", reply_content='" + reply_content + '\'' +
                 ", reply_time=" + reply_time +

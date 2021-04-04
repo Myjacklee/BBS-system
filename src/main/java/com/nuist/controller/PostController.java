@@ -33,7 +33,7 @@ public class PostController {
     @RequestMapping(path = "/{postId}")
     public String goPost(Model model, @PathVariable("postId")Integer postId){
         List<Board> allBoard=boardService.findAllBoard(postId);
-        if(allBoard==null){
+        if(allBoard.size()==0){
             model.addAttribute("message","访问的板块不存在");
             return "error";
         }

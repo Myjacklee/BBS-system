@@ -13,6 +13,10 @@
     <script src="${pageContext.request.contextPath}/js/jquery-3.4.0.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/serializeJson.js"></script>
     <script src="${pageContext.request.contextPath}/js/reload.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/navbar.css">
+
     <script type="text/javascript">
         $(function(){
             $("#uploadReply").click(function(){
@@ -40,6 +44,7 @@
         });
     </script>
 </head>
+<%@include file="navbar.jsp"%>
 <body>
 <h1>该页面展示每条帖子的详细信息</h1>
 <h2>帖子信息</h2>

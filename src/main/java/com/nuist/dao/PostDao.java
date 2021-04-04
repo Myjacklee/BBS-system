@@ -21,4 +21,7 @@ public interface PostDao {
     public Post findPostById(Integer id);
     @Update("update post set post_num=post_num+1 where bbs_section_id=#{bbs_section_id}")
     public Integer addPostNum(Integer bbs_section_num);
+
+    @Update("update post set post_num=post_num-1 where bbs_section_id=(select bbs_section_id from board where board_id=#{boardId})")
+    public Integer reducePostNumByBoardId(Integer boardId);
 }

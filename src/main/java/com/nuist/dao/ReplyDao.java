@@ -18,7 +18,7 @@ public interface ReplyDao {
     public List<Reply> findAllReply(Integer board_id);
     @Select("select * from reply_board where reply_id=#{reply_id}")
     public Reply findReplyById(Integer reply_id);
-    @Select("select * from reply_board where uid=#{uid}")
+    @Select("select *,board.board_title as board_title from reply_board,board where reply_board.uid=#{uid} and board.board_id=reply_board.board_id")
     public List<Reply> findReplyByUid(Integer uid);
     @Delete("delete from reply_board where board_id=#{boardId}")
     public Integer deleteReplyByBoardId(Integer boardId);

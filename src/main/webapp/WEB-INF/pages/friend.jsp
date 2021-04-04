@@ -12,6 +12,9 @@
     <title>好友模块界面</title>
     <script src="${pageContext.request.contextPath}/js/jquery-3.4.0.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/serializeJson.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/navbar.css">
     <script type="text/javascript">
         $(function(){
             $("#searchButton").click(function(){
@@ -106,6 +109,7 @@
         });
     </script>
 </head>
+<%@include file="navbar.jsp"%>
 <body>
 <h1>好友模块界面</h1>
 <h2>好友添加</h2>
