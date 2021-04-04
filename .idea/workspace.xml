@@ -8,31 +8,27 @@
   <component name="ChangeListManager">
     <list default="true" id="ec1f2385-2dc6-490f-98db-0252c283a594" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nuist/controller/ManageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nuist/controller/ManageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nuist/utils/StaticClass.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nuist/utils/node.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resource/applicationContext.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resource/applicationContext.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resource/springMVC.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resource/springMVC.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/board.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/board.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/home.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/manage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/manage.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nuist/controller/FriendController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nuist/controller/FriendController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nuist/dao/FriendDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nuist/dao/FriendDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nuist/service/FriendService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nuist/service/FriendService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nuist/service/impl/FriendServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nuist/service/impl/FriendServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nuist/utils/TestString.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nuist/utils/ThreadPool.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nuist/utils/Util.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/friend.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/friend.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/testMybatis.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/testMybatis.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/applicationContext.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/applicationContext.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/nuist/controller/ManageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/nuist/controller/ManageController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/nuist/utils/StaticClass$innerClass.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/nuist/utils/StaticClass.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/nuist/utils/node.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/springMVC.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/springMVC.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/applicationContext.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/applicationContext.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/nuist/controller/ManageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/nuist/controller/ManageController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/nuist/utils/StaticClass$innerClass.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/nuist/utils/StaticClass.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/nuist/utils/node.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/springMVC.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/springMVC.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/pages/board.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/pages/board.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/pages/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/pages/home.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/pages/manage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/pages/manage.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/nuist/controller/FriendController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/nuist/controller/FriendController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/nuist/dao/FriendDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/nuist/dao/FriendDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/nuist/service/FriendService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/nuist/service/FriendService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/nuist/service/impl/FriendServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/nuist/service/impl/FriendServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/nuist/utils/TestString.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/nuist/utils/ThreadPool.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/nuist/utils/Util.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/nuist/controller/FriendController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/nuist/controller/FriendController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/nuist/dao/FriendDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/nuist/dao/FriendDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/nuist/service/FriendService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/nuist/service/FriendService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/nuist/service/impl/FriendServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/nuist/service/impl/FriendServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/pages/friend.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/pages/friend.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/testMybatis.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/testMybatis.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -61,8 +57,8 @@
         <option value="spring-beans.schema" />
         <option value="JavaScript File" />
         <option value="Interface" />
-        <option value="Jsp File" />
         <option value="FxmlFile" />
+        <option value="Jsp File" />
         <option value="Class" />
       </list>
     </option>
@@ -123,9 +119,9 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Tomcat Server.Tomcat 6.0.53">
-    <configuration name="Resource" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.nuist.utils.Resource" />
+  <component name="RunManager" selected="JUnit.testFriendRecommend.test">
+    <configuration name="rwat" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.nuist.utils.rwat" />
       <module name="SSM" />
       <extension name="coverage">
         <pattern>
@@ -137,28 +133,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestString" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.nuist.utils.TestString" />
+    <configuration name="test3.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SSM" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.nuist.utils.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="test3" />
+      <option name="METHOD_NAME" value="test" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="node" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.nuist.utils.node" />
+    <configuration name="testFriendRecommend.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SSM" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.nuist.utils.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="testFriendRecommend" />
+      <option name="METHOD_NAME" value="test" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -344,21 +334,21 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.node" />
-      <item itemvalue="Application.TestString" />
-      <item itemvalue="Application.Resource" />
+      <item itemvalue="Application.rwat" />
       <item itemvalue="JUnit.testSpring.run1" />
       <item itemvalue="JUnit.testRegister.test" />
-      <item itemvalue="Tomcat Server.Tomcat 6.0.53" />
       <item itemvalue="JUnit.testMybatis.run1" />
+      <item itemvalue="JUnit.testFriendRecommend.test" />
+      <item itemvalue="JUnit.test3.test" />
+      <item itemvalue="Tomcat Server.Tomcat 6.0.53" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.testFriendRecommend.test" />
+        <item itemvalue="Application.rwat" />
+        <item itemvalue="JUnit.test3.test" />
         <item itemvalue="JUnit.testMybatis.run1" />
         <item itemvalue="JUnit.testRegister.test" />
-        <item itemvalue="Application.Resource" />
-        <item itemvalue="Application.TestString" />
-        <item itemvalue="Application.node" />
       </list>
     </recent_temporary>
   </component>
@@ -382,7 +372,8 @@
       <workItem from="1616938623987" duration="14607000" />
       <workItem from="1616986568220" duration="24937000" />
       <workItem from="1617025963166" duration="614000" />
-      <workItem from="1617071806214" duration="128882000" />
+      <workItem from="1617071806214" duration="158280000" />
+      <workItem from="1617500437821" duration="2071000" />
     </task>
     <servers />
   </component>

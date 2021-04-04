@@ -1,5 +1,6 @@
 import com.nuist.dao.FriendDao;
 import com.nuist.domain.Friend;
+import com.nuist.domain.FriendAddRequest;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -31,11 +32,14 @@ public class testMybatis {
 //        FriendDao dao=session.getMapper(FriendDao.class);
         ApplicationContext ac =new ClassPathXmlApplicationContext("applicationContext.xml");
         FriendDao dao=ac.getBean("friendDao",FriendDao.class);
-        //查询所有数据
-        List<Friend> list= dao.getMessage(2);
-        for(Friend item:list){
-            System.out.println(item);
-        }
+        //进行更新操作
+        FriendAddRequest friendAddRequest=new FriendAddRequest();
+        friendAddRequest.setReceiver_uid(2);
+        friendAddRequest.setStates(1);
+        friendAddRequest.setMd5_code("full");
+        friendAddRequest.setRequest_id(1);
+        dao.dealWithRequest(friendAddRequest);
+        System.out.println(friendAddRequest);
     }
 
 }

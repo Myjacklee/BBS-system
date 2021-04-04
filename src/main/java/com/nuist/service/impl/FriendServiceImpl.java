@@ -2,12 +2,16 @@ package com.nuist.service.impl;
 
 import com.nuist.dao.FriendDao;
 import com.nuist.domain.Friend;
+import com.nuist.domain.FriendAddRequest;
 import com.nuist.service.FriendService;
+import com.nuist.utils.MD5Util;
 import com.nuist.websocket.MessageWebSocket;
 import com.sun.xml.internal.ws.developer.Serialization;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -35,21 +39,23 @@ public class FriendServiceImpl implements FriendService {
                 return 2;
             }
         }
-        return friendDao.sendAddFriendRequest(senderUid,receiverUid);
+        Timestamp timestamp=new Timestamp(new Date().getTime());
+        String md5_code= MD5Util.getMD5(timestamp+senderUid.toString()+receiverUid.toString());
+        return friendDao.sendAddFriendRequest(senderUid,receiverUid,md5_code);
     }
 
     @Override
-    public List<Friend> getMessage(Integer uid) {
+    public List<FriendAddRequest> getMessage(Integer uid) {
         return friendDao.getMessage(uid);
     }
 
     @Override
-    public Integer dealWithRequest(Integer sender_uid, Integer receiver_uid, Integer states) {
-        if(states==1&&friendDao.dealWithRequest(sender_uid,receiver_uid,states)==1){
-            friendDao.addFriend(sender_uid, receiver_uid);
+    public Integer dealWithRequest(FriendAddRequest friendAddRequest) {
+        if(friendAddRequest.getStates()==1&&friendDao.dealWithRequest(friendAddRequest)==1){
+            friendDao.addFriend(friendAddRequest.getUid(), friendAddRequest.getReceiver_uid());
             return 1;
-        }else if(states==2){
-            friendDao.dealWithRequest(sender_uid,receiver_uid,states);
+        }else if(friendAddRequest.getStates()==2){
+            friendDao.dealWithRequest(friendAddRequest);
             return 0;
         }else{
             return 0;

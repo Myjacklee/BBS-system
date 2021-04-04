@@ -49,9 +49,11 @@
                     dateType:"json",
                     success:function(data){
                         if(data=="success"){
-                            alert("请求添加好友成功，等待会应");
+                            alert("请求添加好友成功，等待回应");
                         }else if(data=="reject"){
                             alert("无法添加自己为好友");
+                        }else if(data=="contain"){
+                            alert("你与该用户已是好友关系");
                         }else{
                             alert("请求失败");
                         }
@@ -157,7 +159,7 @@
 </table>
 <script type="text/javascript">
     $(function(){
-        setTimeout(function(){getMessage();},5000);
+        window.setInterval(function(){getMessage();},5000);
     });
     function getMessage(){
         $.ajax({
@@ -169,12 +171,10 @@
                 if(data.length=!0){
                     $("#friendRequest").empty();
                     for (var i in data){
-                        $("#friendRequest").append('<tr><td>'+data[i].uid+'</td><td>'+data[i].nickname+'</td><td><button name='+data[i].uid+' id=agree>同意</button name='+data[i].uid+' id=reject><button>拒绝</button></td></tr>');
+                        $("#friendRequest").append('<tr><td>'+data[i].uid+'</td><td>'+data[i].nickname+'</td><td><button><a href= ${pageContext.request.contextPath}/friend/response/'+data[i].md5_code+'/'+data[i].request_id+'/1'+' >同意</a></button><button><a href= ${pageContext.request.contextPath}/friend/response/'+data[i].md5_code+'/'+data[i].request_id+'/2'+' >拒绝</a></button></td></tr>');
+                        // $("#friendRequest").append('<tr><td>'+data[i].uid+'</td><td>'+data[i].nickname+'</td><td><button name='+data[i].uid+' id=agree>同意</button name='+data[i].uid+' id=reject><button>拒绝</button></td></tr>');
                     }
                 }
-            },
-            error: function(XMLHttpRequest){
-                alert( "Error: " + XMLHttpRequest.responseText);
             }
         });
     }

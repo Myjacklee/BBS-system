@@ -1,6 +1,7 @@
 package com.nuist.controller;
 
 import com.nuist.domain.Friend;
+import com.nuist.domain.FriendAddRequest;
 import com.nuist.service.FriendService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -56,18 +57,25 @@ public class FriendController {
 
     @RequestMapping(path = "/getMessage")
     @ResponseBody
-    public List<Friend> getMessage(HttpSession session){
+    public List<FriendAddRequest> getMessage(HttpSession session){
         Integer uid=(Integer) session.getAttribute("uid");
         return friendService.getMessage(uid);
     }
-    @RequestMapping(path = "/response/{friendUid}/{states}")
-    @ResponseBody
-    public String dealWithRequest(@PathVariable("states") Integer states,@PathVariable("friendUid") Integer sender,HttpSession session){
+    @RequestMapping(path = "/response/{md5_code}/{request_id}/{states}")
+    public String dealWithRequest(Model model,@PathVariable("request_id") Integer request_id,@PathVariable("md5_code") String md5_code,@PathVariable("states") Integer states,HttpSession session){
         Integer uid=(Integer) session.getAttribute("uid");
-        if(friendService.dealWithRequest(sender,uid,states)==1){
-            return "success";
+        FriendAddRequest friendAddRequest=new FriendAddRequest();
+        friendAddRequest.setMd5_code(md5_code);
+        friendAddRequest.setRequest_id(request_id);
+        friendAddRequest.setStates(states);
+        friendAddRequest.setReceiver_uid(uid);
+        if(friendService.dealWithRequest(friendAddRequest)==1){
+            model.addAttribute("result","成功接收好友请求");
+            System.out.println("成功接收");
         }else{
-            return "fail";
+            model.addAttribute("result","已拒绝好友请求");
+            System.out.println("已经拒绝");
         }
+        return "friendAddRequestResult";
     }
 }
