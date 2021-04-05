@@ -16,7 +16,35 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/navbar.css">
+    <style>
+        .board_num{
+            padding-right: 0;
+        }
+        .user_home{
+            padding-left: 0;
+        }
+        .text-center img{
+            width:150px;
+            height: 150px;
+        }
+        .board{
+            border: 2px solid #eeeeee;
 
+        }
+        .board_owner_information{
+            border-right: 2px solid #eeeeee;
+        }
+        .board .board_owner_information,.board .board_content{
+            padding: 20px;
+        }
+
+        .reply_content{
+            padding-bottom: 20px;
+        }
+        textarea{
+            resize: none;
+        }
+    </style>
     <script type="text/javascript">
         $(function(){
             $("#uploadReply").click(function(){
@@ -32,6 +60,7 @@
                         if(data.message=="success"){
                             alert("回帖成功");
                             window.location.href="${pageContext.request.contextPath}/board/${board.board_id}/#"+data.floor;
+                            window.location.reload();
                         }else{
                             alert("回帖失败，请重新尝试");
                         }
@@ -46,41 +75,83 @@
 </head>
 <%@include file="navbar.jsp"%>
 <body>
-<h1>该页面展示每条帖子的详细信息</h1>
-<h2>帖子信息</h2>
-<p>帖子id：${board.board_id}</p>
-<p>帖子所在模块id：${board.bbs_section_id}</p>
-<p>最新回复时间：${board.last_reply_time}</p>
-<p>创建时间${board.board_create_time}</p>
-<p>帖子标题：${board.board_title}</p>
-<p>帖子内容：${board.board_content}</p>
-<p>创建帖子的用户昵称：${board.nickname}</p>
-<h2>回帖栏</h2>
-<form id="uploadReplyForm" >
-    <textarea cols="30" rows="10" name="reply_content"></textarea>
-</form>
-<button id="uploadReply">回复</button>
-
-<h2>回帖楼层</h2>
-<table>
-    <thead>
-    <tr>
-        <td>当前楼层</td>
-        <td>层主昵称</td>
-        <td>回帖内容</td>
-        <td>回帖时间</td>
-    </tr>
-    </thead>
-    <tbody>
+<div class="container">
+    <h2>帖子标题：${board.board_title}</h2>
+    <div class="row board">
+        <div class="col-md-3 text-center board_owner_information">
+            <img src="${pageContext.request.contextPath}/images/chatHead.jpg" class="img-thumbnail" alt="头像">
+            <h3>${board.nickname}</h3>
+            <div class="row">
+                <div class="col-md-6 board_num">
+                    <p><span class="glyphicon glyphicon-pencil"></span> 发帖数：99+</p>
+                </div>
+                <div class="col-md-6 user_home">
+                    <a href="${pageContext.request.contextPath}/home/${board.uid}"><p><span class="glyphicon glyphicon-home"></span> 个人主页</p></a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9 board_content">
+            <div class="row">
+                <div class="col-md-12 reply_content">
+                    <p>${board.board_content}</p>
+                </div>
+            </div>
+            <hr>
+            <div class="row reply_time">
+                <div class="col-md-12">
+                    <p class=" text-right ">发表于 ${board.board_create_time}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h2>回复</h2>
     <c:forEach items="${allReply}" var="reply" >
         <tr id="${reply.floor}">
-            <td height="100px">${reply.floor}</td>
-            <td height="100px">${reply.nickname}</td>
-            <td height="100px">${reply.reply_content}</td>
-            <td height="100px">${reply.reply_time}</td>
+            <div class="row board" id="${reply.floor}">
+                <div class="col-md-3 text-center board_owner_information">
+                    <img src="${pageContext.request.contextPath}/images/chatHead.jpg" class="img-thumbnail" alt="头像">
+                    <h3>${reply.nickname}</h3>
+                    <div class="row">
+                        <div class="col-md-6 board_num">
+                            <p><span class="glyphicon glyphicon-pencil"></span> 发帖数：99+</p>
+                        </div>
+                        <div class="col-md-6 user_home">
+                            <a href="${pageContext.request.contextPath}/home/${reply.uid}"><p><span class="glyphicon glyphicon-home"></span> 个人主页</p></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-9 board_content">
+                    <div class="row">
+                        <div class="col-md-12 reply_content">
+                            <p>${reply.reply_content}</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p class="text-left ">${reply.floor} 楼</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p class=" text-right ">发表于 ${reply.reply_time}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </tr>
     </c:forEach>
-    </tbody>
-</table>
+    <div class="row">
+        <div class="col-md-12">
+            <h2>回帖栏</h2>
+            <div class="form-group">
+                <form id="uploadReplyForm">
+                    <label>回帖内容</label><textarea name="reply_content" rows="10" cols="30" class="form-control" autocomplete="off"></textarea><br>
+                </form>
+                <button  id="uploadReply" class="btn btn-default">提交</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
 </body>
 </html>

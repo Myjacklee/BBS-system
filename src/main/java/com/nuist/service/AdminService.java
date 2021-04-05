@@ -5,4 +5,6 @@ import com.nuist.domain.Post;
 
 public interface AdminService {
     public Integer login(Admin admin);
+    public Integer addAdmin(Admin admin);
+
 }

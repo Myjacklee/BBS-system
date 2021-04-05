@@ -30,6 +30,8 @@ public class FriendController {
         Integer uid=(Integer) session.getAttribute("uid");
         List<Friend> allFriends=friendService.findAllFriends(uid);
         model.addAttribute("allFriends",allFriends);
+        List<FriendAddRequest> allRequest=friendService.getMessage(uid);
+        model.addAttribute("allRequest",allRequest);
         return "friend";
     }
     @RequestMapping("/findFriend")
@@ -55,20 +57,16 @@ public class FriendController {
         }
     }
 
-    @RequestMapping(path = "/getMessage")
-    @ResponseBody
-    public List<FriendAddRequest> getMessage(HttpSession session){
-        Integer uid=(Integer) session.getAttribute("uid");
-        return friendService.getMessage(uid);
-    }
-    @RequestMapping(path = "/response/{md5_code}/{request_id}/{states}")
-    public String dealWithRequest(Model model,@PathVariable("request_id") Integer request_id,@PathVariable("md5_code") String md5_code,@PathVariable("states") Integer states,HttpSession session){
+
+    @RequestMapping(path = "/response/{md5_code}/{request_id}/{states}/{senderUid}")
+    public String dealWithRequest(@PathVariable("senderUid") Integer senderUid, Model model,@PathVariable("request_id") Integer request_id,@PathVariable("md5_code") String md5_code,@PathVariable("states") Integer states,HttpSession session){
         Integer uid=(Integer) session.getAttribute("uid");
         FriendAddRequest friendAddRequest=new FriendAddRequest();
         friendAddRequest.setMd5_code(md5_code);
         friendAddRequest.setRequest_id(request_id);
         friendAddRequest.setStates(states);
         friendAddRequest.setReceiver_uid(uid);
+        friendAddRequest.setUid(senderUid);
         if(friendService.dealWithRequest(friendAddRequest)==1){
             model.addAttribute("result","成功接收好友请求");
             System.out.println("成功接收");

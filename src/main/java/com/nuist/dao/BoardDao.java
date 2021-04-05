@@ -24,4 +24,6 @@ public interface BoardDao {
     //使用#{arg0}，{arg1}这样的形式,或者使用别名
     @Delete("delete from board where uid=#{uid} and board_id=#{boardId}")
     public Integer deleteBoardByBoardId(@Param("uid") Integer uid,@Param("boardId") Integer boardId);
+    @Select("select uid from board where board_id=#{boardId}")
+    public Integer findUidByBoardId(Integer boardId);
 }

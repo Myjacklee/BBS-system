@@ -1,9 +1,12 @@
 import com.nuist.dao.FriendDao;
+import com.nuist.dao.MessageDao;
 import com.nuist.dao.PostDao;
 import com.nuist.dao.ReplyDao;
 import com.nuist.domain.Friend;
 import com.nuist.domain.FriendAddRequest;
+import com.nuist.domain.Message;
 import com.nuist.domain.Reply;
+import com.sun.javaws.IconUtil;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -34,11 +37,14 @@ public class testMybatis {
 //        //获取到代理对象
 //        FriendDao dao=session.getMapper(FriendDao.class);
         ApplicationContext ac =new ClassPathXmlApplicationContext("applicationContext.xml");
-        PostDao dao=ac.getBean("postDao", PostDao.class);
+        MessageDao dao=ac.getBean("messageDao", MessageDao.class);
         //进行更新操作
 
-        dao.reducePostNumByBoardId(15);
-
+        Integer list=dao.getMessageNum(6);
+        System.out.println(list);
+//        for(Message message: list){
+//            System.out.println(message);
+//        }
     }
 
 }

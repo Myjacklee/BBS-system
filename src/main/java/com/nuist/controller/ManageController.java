@@ -114,6 +114,6 @@ public class ManageController {
         Integer uid=(Integer) session.getAttribute("uid");
         System.out.println(uid);
         boardService.deleteBoardByBoardId(uid,boardId);
-        return "redirect:/manage/home";
+        return "redirect:/manage/home/boardManage";
     }
 }

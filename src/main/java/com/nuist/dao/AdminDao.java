@@ -12,5 +12,6 @@ public interface AdminDao {
             @Result(column = "admin_id",property = "id")
     })
     public Integer login(Admin admin);
-
+    @Insert("insert into admin(name,password) values(#{name},#{password})")
+    public Integer addAdmin(Admin admin);
 }

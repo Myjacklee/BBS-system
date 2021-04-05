@@ -24,7 +24,7 @@
     <%@include file="manageNavbar.jsp"%>
     <div class="row">
         <div class="col-md-12">
-            <h2>个人帖子管理</h2>
+            <h2>个人回复管理</h2>
             <table class="table table-hover">
                 <thead>
                 <tr>

@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html>
 <head>
     <title>好友模块界面</title>
@@ -15,6 +16,12 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/navbar.css">
+    <style>
+        tbody>tr>td{
+            display: table-cell;
+            vertical-align: middle !important;
+        }
+    </style>
     <script type="text/javascript">
         $(function(){
             $("#searchButton").click(function(){
@@ -33,7 +40,7 @@
                         }else{
                             alert("搜索成功");
                             for(var i in data){
-                                $("#result").append('<tr><td>'+data[i].uid+'</td><td><a href=${pageContext.request.contextPath}/home'+data[i].uid+'>'+data[i].nickname+'</a></td><td><button name='+data[i].uid+' id=addFriend>添加好友</button></td></tr>')
+                                $("#result").append('<tr><td>'+data[i].uid+'</td><td><a href=${pageContext.request.contextPath}/home'+data[i].uid+'>'+data[i].nickname+'</a></td><td><button class="btn btn-info" name='+data[i].uid+' id=addFriend>添加好友</button></td></tr>')
                             }
                         }
 
@@ -108,80 +115,95 @@
             });
         });
     </script>
+
 </head>
 <%@include file="navbar.jsp"%>
+
 <body>
-<h1>好友模块界面</h1>
-<h2>好友添加</h2>
-<form id="findFriendForm">
-    请输入要搜索的好友的账号：<input type="text" name="uid"/>
-</form>
-<table>
-    <thead>
-    <tr>
-        <th>账号</th>
-        <th>昵称</th>
-        <th>操作</th>
-    </tr>
-    </thead>
-    <tbody id="result">
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>好友列表</h2>
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th>账号</th>
+                            <th>昵称</th>
+                            <th>主页</th>
+                        </tr>
+                        </thead>
+                        <tbody id="allFriends">
+                        <c:forEach items="${allFriends}" var="friend">
+                            <tr>
+                                <th>${friend.uid}</th>
+                                <th>${friend.nickname}</th>
+                                <th><a href="${pageContext.request.contextPath}/home/${friend.uid}">主页</a></th>
+                            </tr>
+                        </c:forEach>
+                        </tbody>
+                    </table>
+                </div>
 
-    </tbody>
-</table>
-<button id="searchButton">搜索</button>
-<h2>添加好友请求列表</h2>
-<table>
-    <thead>
-    <tr>
-        <th>账号</th>
-        <th>昵称</th>
-        <th>操作</th>
-    </tr>
-    </thead>
-    <tbody id="friendRequest">
 
-    </tbody>
-</table>
-<h2>好友列表</h2>
-<table>
-    <thead>
-    <tr>
-        <th>账号</th>
-        <th>昵称</th>
-        <th>主页</th>
-    </tr>
-    </thead>
-    <tbody id="allFriends">
-    <c:forEach items="${allFriends}" var="friend">
-        <tr>
-            <th>${friend.uid}</th>
-            <th>${friend.nickname}</th>
-            <th><a href="${pageContext.request.contextPath}/home/${friend.uid}">主页</a></th>
-        </tr>
-    </c:forEach>
-    </tbody>
-</table>
-<script type="text/javascript">
-    $(function(){
-        window.setInterval(function(){getMessage();},5000);
-    });
-    function getMessage(){
-        $.ajax({
-            url:"${pageContext.request.contextPath}/friend/getMessage",
-            contentType:"application/json;charset=UTF-8",
-            type:"post",
-            dateType:"json",
-            success:function(data){
-                if(data.length=!0){
-                    $("#friendRequest").empty();
-                    for (var i in data){
-                        $("#friendRequest").append('<tr><td>'+data[i].uid+'</td><td>'+data[i].nickname+'</td><td><button><a href= ${pageContext.request.contextPath}/friend/response/'+data[i].md5_code+'/'+data[i].request_id+'/1'+' >同意</a></button><button><a href= ${pageContext.request.contextPath}/friend/response/'+data[i].md5_code+'/'+data[i].request_id+'/2'+' >拒绝</a></button></td></tr>');
-                        // $("#friendRequest").append('<tr><td>'+data[i].uid+'</td><td>'+data[i].nickname+'</td><td><button name='+data[i].uid+' id=agree>同意</button name='+data[i].uid+' id=reject><button>拒绝</button></td></tr>');
-                    }
-                }
-            }
-        });
-    }
-</script>
+            </div>
+
+        </div>
+        <div class="col-md-4">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>好友添加</h2>
+                    <div class="form-group">
+                        <form id="findFriendForm" >
+                            请输入要搜索的好友的账号：<input type="text" name="uid" class="form-control"/>
+                        </form>
+                    </div>
+
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th>账号</th>
+                            <th>昵称</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody id="result">
+
+                        </tbody>
+                    </table>
+                    <button id="searchButton" class="btn btn-primary">搜索</button>
+                </div>
+                <div class="col-md-12">
+                    <h2>请求列表</h2>
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th>账号</th>
+                            <th>昵称</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody id="friendRequest">
+                            <c:forEach items="${allRequest}" var="request">
+                                <tr>
+                                    <td>${request.uid}</td>
+                                    <td>${request.nickname}</td>
+                                    <td><a href= "${pageContext.request.contextPath}/friend/response/${request.md5_code}/${request.request_id}/1/${request.uid}"><button type="button" class="btn btn-sm btn-success">同意</button></a> <a href= "${pageContext.request.contextPath}/friend/response/${request.md5_code}/${request.request_id}/2/${request.uid}"><button type="button" class="btn btn-sm btn-danger">拒绝</button></a></td>
+                                </tr>
+                            </c:forEach>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+
+
 </body>
 </html>

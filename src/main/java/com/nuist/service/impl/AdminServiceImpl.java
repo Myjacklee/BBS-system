@@ -22,5 +22,12 @@ public class AdminServiceImpl implements AdminService {
         return adminDao.login(admin);
     }
 
+    @Override
+    public Integer addAdmin(Admin admin) {
+        adminDao.addAdmin(admin);
+
+        return 1;
+    }
+
 
 }

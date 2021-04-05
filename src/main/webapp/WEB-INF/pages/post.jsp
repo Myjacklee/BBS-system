@@ -20,6 +20,9 @@
         #uploadBoardForm label{
             font-size: 16px;
         }
+        textarea{
+            resize: none;
+        }
     </style>
     <script type="text/javascript">
             $(function(){
@@ -35,7 +38,6 @@
                     data:inputString,
                     dateType:"json",
                     success:function(data){
-                        alert(data);
                         if(data=="success"){
                             alert("发帖成功");
                             location.reload();

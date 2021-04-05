@@ -21,18 +21,21 @@
             background-position: center bottom	;
             background-size: cover;
         }
+        .login-top h1{
+            color: white;
+        }
     </style>
 </head>
 <body>
 <div class="container">
     <div class="jumbotron login-top">
-
+        <h1>校园BBS系统</h1>
     </div>
     <div class="row">
         <div class="col-md-4 col-md-offset-4  ">
             <h1>登录</h1>
             <c:if test="${message!=null}">
-                <div class="alert alert-danger" role="alert">${message}</div>
+                <span class="label label-warning" >${message}</span>
             </c:if>
             <form method="post" action="${pageContext.request.contextPath}/user/login">
                 <div class="form-group">
@@ -41,8 +44,8 @@
                     <input type="submit" class="btn btn-primary" value="登录">
                 </div>
             </form>
-            <a href="${pageContext.request.contextPath}/user/goRegister">注册页面</a>
-            <a href="${pageContext.request.contextPath}/admin/goLogin">管理员登录页面</a>
+            <a href="${pageContext.request.contextPath}/user/goRegister">注册</a>
+            <a href="${pageContext.request.contextPath}/admin/goLogin">管理员登录</a>
         </div>
     </div>
 

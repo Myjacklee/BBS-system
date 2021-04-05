@@ -34,9 +34,8 @@ public class ReplyController {
         reply.setBoard_id(boardId);
         System.out.println(reply);
         Integer result=replyService.addReply(reply);
-        Integer floor=replyService.findReplyById(reply.getReply_id()).getFloor();
         ReplyResult replyResult=new ReplyResult();
-        replyResult.setFloor(floor);
+        replyResult.setFloor(reply.getFloor());
         if(result==1){
             replyResult.setMessage("success");
         }else{
