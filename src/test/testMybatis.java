@@ -1,7 +1,4 @@
-import com.nuist.dao.FriendDao;
-import com.nuist.dao.MessageDao;
-import com.nuist.dao.PostDao;
-import com.nuist.dao.ReplyDao;
+import com.nuist.dao.*;
 import com.nuist.domain.Friend;
 import com.nuist.domain.FriendAddRequest;
 import com.nuist.domain.Message;
@@ -37,14 +34,14 @@ public class testMybatis {
 //        //获取到代理对象
 //        FriendDao dao=session.getMapper(FriendDao.class);
         ApplicationContext ac =new ClassPathXmlApplicationContext("applicationContext.xml");
-        MessageDao dao=ac.getBean("messageDao", MessageDao.class);
+        ReplyDao dao=ac.getBean("replyDao", ReplyDao.class);
         //进行更新操作
 
-        Integer list=dao.getMessageNum(6);
-        System.out.println(list);
-//        for(Message message: list){
-//            System.out.println(message);
-//        }
+        List<Reply> list=dao.findAllReply(20);
+//        System.out.println(list);
+        for(Reply message: list){
+            System.out.println(message);
+        }
     }
 
 }

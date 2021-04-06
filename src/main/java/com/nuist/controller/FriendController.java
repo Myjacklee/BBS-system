@@ -2,6 +2,7 @@ package com.nuist.controller;
 
 import com.nuist.domain.Friend;
 import com.nuist.domain.FriendAddRequest;
+import com.nuist.domain.OperateResult;
 import com.nuist.service.FriendService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -67,13 +68,20 @@ public class FriendController {
         friendAddRequest.setStates(states);
         friendAddRequest.setReceiver_uid(uid);
         friendAddRequest.setUid(senderUid);
+        OperateResult operateResult=new OperateResult();
         if(friendService.dealWithRequest(friendAddRequest)==1){
-            model.addAttribute("result","成功接收好友请求");
+            operateResult.setTitle("成功接收请求");
+            operateResult.setMessage("您与该用户已是好友关系");
+            operateResult.setState("success");
+            model.addAttribute("result",operateResult);
             System.out.println("成功接收");
         }else{
-            model.addAttribute("result","已拒绝好友请求");
+            operateResult.setTitle("拒绝好友请求");
+            operateResult.setMessage("您拒绝了用户的好友请求");
+            operateResult.setState("fail");
+            model.addAttribute("result",operateResult);
             System.out.println("已经拒绝");
         }
-        return "friendAddRequestResult";
+        return "operateResult";
     }
 }

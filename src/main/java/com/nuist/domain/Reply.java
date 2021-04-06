@@ -18,7 +18,24 @@ public class Reply {
     private Timestamp reply_time;
     private Integer floor;
 
+    private Integer reply_target_floor;
+    private String reply_target_content;
 
+    public Integer getReply_target_floor() {
+        return reply_target_floor;
+    }
+
+    public void setReply_target_floor(Integer reply_target_floor) {
+        this.reply_target_floor = reply_target_floor;
+    }
+
+    public String getReply_target_content() {
+        return reply_target_content;
+    }
+
+    public void setReply_target_content(String reply_target_content) {
+        this.reply_target_content = reply_target_content;
+    }
 
     public String getBoard_title() {
         return board_title;
@@ -39,6 +56,8 @@ public class Reply {
                 ", reply_content='" + reply_content + '\'' +
                 ", reply_time=" + reply_time +
                 ", floor=" + floor +
+                ", reply_target_floor=" + reply_target_floor +
+                ", reply_target_content='" + reply_target_content + '\'' +
                 '}';
     }
 

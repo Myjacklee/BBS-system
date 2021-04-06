@@ -26,4 +26,6 @@ public interface BoardDao {
     public Integer deleteBoardByBoardId(@Param("uid") Integer uid,@Param("boardId") Integer boardId);
     @Select("select uid from board where board_id=#{boardId}")
     public Integer findUidByBoardId(Integer boardId);
+    @Update("update board set board_reply_num=board_reply_num-1 where board_id=(select board_id from reply_board where reply_id = #{replyId} and uid=#{uid})")
+    public Integer reduceReplyNumByReplyId(@Param("replyId") Integer replyId,@Param("uid") Integer uid);
 }

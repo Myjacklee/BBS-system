@@ -1,14 +1,15 @@
 <%--
   Created by IntelliJ IDEA.
   User: admin_2
-  Date: 2021/4/4
-  Time: 23:17
+  Date: 2021/4/3
+  Time: 14:08
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>404 not find</title>
+    <title>结果</title>
     <script src="${pageContext.request.contextPath}/js/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
@@ -30,17 +31,27 @@
         }
     </style>
 </head>
-<%@include file="navbar.jsp" %>
+<%@include file="navbar.jsp"%>
 <body>
 <div class="container">
     <div class="row  content">
+
         <div class="col-md-4 col-md-offset-2 img_div">
-            <img class="img img-responsive"	 src="${pageContext.request.contextPath}/images/404.png">
+
+
+                <c:choose>
+                     <c:when test="${result.state=='success'}">
+                    <img class="img img-responsive"	 src="${pageContext.request.contextPath}/images/success.png">
+</c:when>
+<c:when test="${result.state=='fail'}">
+                     <img class="img img-responsive"	 src="${pageContext.request.contextPath}/images/fail.png">
+</c:when>
+                </c:choose>
+
         </div>
         <div class="col-md-4 text-center">
-            <h1 class="text-danger">404 not found</h1>
-            <h2>请求的资源未找到</h2>
-            <p class="text_notice">请检查您输入的url是否正确</p>
+            <h1 class="text-danger">${result.title}</h1>
+            <p class="text_notice">${result.message}</p>
         </div>
 
     </div>

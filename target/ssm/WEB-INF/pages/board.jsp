@@ -38,12 +38,18 @@
             padding: 20px;
         }
 
-        .reply_content{
-            padding-bottom: 20px;
-        }
+
         textarea{
             resize: none;
         }
+
+        .reply_content{
+            padding-top: 10px;
+        }
+        .target_floor{
+            border-left: 3px solid #5bc0de;
+        }
+
     </style>
     <script type="text/javascript">
         $(function(){
@@ -51,7 +57,7 @@
                 var input=$("#uploadReplyForm").serializeJson();
                 var inputString=JSON.stringify(input);
                 $.ajax({
-                    url:"${pageContext.request.contextPath}/reply/add/${board.board_id}",
+                    url:"${pageContext.request.contextPath}/reply/add/${board.board_id}/-1",
                     contentType:"application/json;charset=UTF-8",
                     type:"post",
                     data:inputString,
@@ -70,7 +76,48 @@
                     }
                 })
             });
+            $("body").on('click','#uploadReplyToFloor',function(){
+                var input=$("#uploadReplyToFloorForm").serializeJson();
+                var inputString=JSON.stringify(input);
+                $.ajax({
+                    url:"${pageContext.request.contextPath}/reply/add/${board.board_id}/"+$(this).attr("data-id"),
+                    contentType:"application/json;charset=UTF-8",
+                    type:"post",
+                    data:inputString,
+                    dateType:"json",
+                    success:function(data){
+                        if(data.message=="success"){
+                            alert("回复成功");
+                            window.location.href="${pageContext.request.contextPath}/board/${board.board_id}/#"+data.floor;
+                            window.location.reload();
+                        }else{
+                            alert("回复失败，请重新尝试");
+                        }
+                    },
+                    error: function(XMLHttpRequest){
+                        alert( "Error: " + XMLHttpRequest.responseText);
+                    }
+                });
+                $("#replyToFloor").remove();
+            });
         });
+
+        function generate(floor){
+            $("#replyToFloor").remove();
+            $("#"+floor).after('    <div class="row" id="replyToFloor">\n' +
+                '        <div class="col-md-12">\n' +
+                '            <h2>回复栏</h2>\n' +
+                '            <div class="form-group">\n' +
+                '                <form id="uploadReplyToFloorForm">\n' +
+                '                    <label>回复内容</label><textarea name="reply_content" rows="10" cols="30" class="form-control" autocomplete="off"></textarea><br>\n' +
+                '                </form>\n' +
+                '                <button   data-id='+floor+' id="uploadReplyToFloor" class=" btn btn-default">提交</button>\n' +
+                '            </div>\n' +
+                '\n' +
+                '        </div>\n' +
+                '    </div>');
+        }
+
     </script>
 </head>
 <%@include file="navbar.jsp"%>
@@ -122,6 +169,18 @@
                 </div>
                 <div class="col-md-9 board_content">
                     <div class="row">
+                        <div class="col-md-12 target_floor">
+                            <c:if test="${reply.reply_target_floor!=-1}">
+
+                                        <p><a href="#${reply.reply_target_floor}">回复于 ${reply.reply_target_floor} 楼 </a> </p>
+                                        <p>${reply.reply_target_content}</p>
+
+                            </c:if>
+
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
                         <div class="col-md-12 reply_content">
                             <p>${reply.reply_content}</p>
                         </div>
@@ -132,7 +191,7 @@
                             <p class="text-left ">${reply.floor} 楼</p>
                         </div>
                         <div class="col-md-6">
-                            <p class=" text-right ">发表于 ${reply.reply_time}</p>
+                            <p class=" text-right ">发表于 ${reply.reply_time}  <a href="javascript:void(0)" onclick="generate(${reply.floor})"><span class="glyphicon glyphicon-edit"></span> 回复</a> </p>
                         </div>
                     </div>
                 </div>

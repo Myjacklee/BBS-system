@@ -9,4 +9,6 @@ public interface ReplyService {
     public List<Reply> findAllReply(Integer board_id);
     public Reply findReplyById(Integer reply_id);
     public List<Reply> findReplyByUid(Integer uid);
+    public Integer deleteReplyByReplyId(Integer reply_id,Integer uid);
+
 }

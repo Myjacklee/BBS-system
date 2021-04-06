@@ -35,7 +35,7 @@
         <div class="col-md-4 col-md-offset-4  ">
             <h1>登录</h1>
             <c:if test="${message!=null}">
-                <span class="label label-warning" >${message}</span>
+                <div class="alert alert-danger" >${message}</div>
             </c:if>
             <form method="post" action="${pageContext.request.contextPath}/user/login">
                 <div class="form-group">

@@ -72,28 +72,5 @@
 
 
 
-    <%--$(function(){--%>
-    <%--    var errorTime=0;--%>
-    <%--    var interval= window.setInterval(function(){getMessage(errorTime)},5000);--%>
-    <%--});--%>
-    <%--function getMessage(){--%>
-    <%--    $.ajax({--%>
-    <%--        url:"${pageContext.request.contextPath}/message/getMessage",--%>
-    <%--        contentType:"application/json;charset=UTF-8",--%>
-    <%--        type:"post",--%>
-    <%--        dateType:"json",--%>
-    <%--        success:function(data){--%>
-    <%--            if(data!=0){--%>
-    <%--                $("#message_info").show();--%>
-    <%--                $("#message_info").text(data);--%>
-    <%--            }else{--%>
-    <%--                $("#message_info").hide();--%>
-    <%--            }--%>
-    <%--        },--%>
-    <%--        error:function(data){--%>
-    <%--            clearInterval(interval)--%>
-    <%--        }--%>
-    <%--    });--%>
-    <%--}--%>
 </script>
 </html>

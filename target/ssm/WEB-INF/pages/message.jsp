@@ -34,7 +34,7 @@
                 <c:forEach items="${newMessage}" var="message">
                     <tr>
                         <td><a href="${pageContext.request.contextPath}/home/${message.sender_uid}"  target="_blank">${message.sender_name}</a> </td>
-                        <td><a href="${pageContext.request.contextPath}/${message.message_url}"  target="_blank">${message.message_content}</a> </td>
+                        <td><a href="${pageContext.request.contextPath}${message.message_url}"  target="_blank">${message.message_content}</a> </td>
                         <td>${message.message_time}</td>
 
                     </tr>
@@ -56,7 +56,7 @@
                 <c:forEach items="${historyMessage}" var="history">
                     <tr>
                         <td><a href="${pageContext.request.contextPath}/home/${history.sender_uid}" target="_blank">${history.sender_name}</a> </td>
-                        <td><a href="${pageContext.request.contextPath}/${history.message_url}"  target="_blank">${history.message_content}</a> </td>
+                        <td><a href="${pageContext.request.contextPath}${history.message_url}"  target="_blank">${history.message_content}</a> </td>
                         <td>${history.message_time}</td>
 
                     </tr>

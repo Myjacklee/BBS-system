@@ -61,4 +61,15 @@ public class ReplyServiceImpl implements ReplyService {
     public List<Reply> findReplyByUid(Integer uid) {
         return replyDao.findReplyByUid(uid);
     }
+
+    @Override
+    public Integer deleteReplyByReplyId(Integer reply_id, Integer uid) {
+        Integer b=boardDao.reduceReplyNumByReplyId(reply_id,uid);
+        Integer a=replyDao.deleteReplyByReplyId(reply_id,uid);
+        if(b==1&&a==1){
+            return 1;
+        }else{
+            return 0;
+        }
+    }
 }

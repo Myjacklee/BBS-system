@@ -40,7 +40,7 @@
                         <td><a href="${pageContext.request.contextPath}/board/${reply.board_id}">${reply.board_title}</a></td>
                         <td>${reply.reply_content}</td>
                         <td>${reply.reply_time}</td>
-                        <td><a href="">删除</a></td>
+                        <td><a href="${pageContext.request.contextPath}/reply/delete/${reply.reply_id}" target="_blank">删除</a></td>
                     </tr>
                 </c:forEach>
                 </tbody>

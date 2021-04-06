@@ -40,7 +40,7 @@
                         }else{
                             alert("搜索成功");
                             for(var i in data){
-                                $("#result").append('<tr><td>'+data[i].uid+'</td><td><a href=${pageContext.request.contextPath}/home'+data[i].uid+'>'+data[i].nickname+'</a></td><td><button class="btn btn-info" name='+data[i].uid+' id=addFriend>添加好友</button></td></tr>')
+                                $("#result").append('<tr><td>'+data[i].uid+'</td><td><a href=${pageContext.request.contextPath}/home/'+data[i].uid+'>'+data[i].nickname+'</a></td><td><button class="btn btn-info" name='+data[i].uid+' id=addFriend>添加好友</button></td></tr>')
                             }
                         }
 
