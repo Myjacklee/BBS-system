@@ -79,6 +79,10 @@
             $("body").on('click','#uploadReplyToFloor',function(){
                 var input=$("#uploadReplyToFloorForm").serializeJson();
                 var inputString=JSON.stringify(input);
+                if(input.reply_content.length>200){
+                    alert("回复的内容长度超过200，请修改内容");
+                    return;
+                }
                 $.ajax({
                     url:"${pageContext.request.contextPath}/reply/add/${board.board_id}/"+$(this).attr("data-id"),
                     contentType:"application/json;charset=UTF-8",
@@ -99,6 +103,11 @@
                     }
                 });
                 $("#replyToFloor").remove();
+            });
+            $("#reply_to_board").change(function(){
+                if($("#reply_to_board").val().length>200){
+                    alert("回帖的字符长度不能大于200，当前字符长度"+$("#reply_to_board").val().length);
+                }
             });
         });
 
@@ -203,7 +212,7 @@
             <h2>回帖栏</h2>
             <div class="form-group">
                 <form id="uploadReplyForm">
-                    <label>回帖内容</label><textarea name="reply_content" rows="10" cols="30" class="form-control" autocomplete="off"></textarea><br>
+                    <label>回帖内容</label><textarea id="reply_to_board" name="reply_content" rows="10" cols="30" class="form-control" autocomplete="off"></textarea><br>
                 </form>
                 <button  id="uploadReply" class="btn btn-default">提交</button>
             </div>

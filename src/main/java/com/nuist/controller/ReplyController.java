@@ -31,13 +31,18 @@ public class ReplyController {
     @ResponseBody
     public ReplyResult addReply(@RequestBody Reply reply, @PathVariable("reply_floor") Integer reply_floor,@PathVariable("boardId") Integer boardId, HttpSession session){
         Integer uid=(Integer) session.getAttribute("uid");
+        ReplyResult replyResult=new ReplyResult();
+
+        if(reply.getReply_content().length()>200){
+            replyResult.setMessage("fail");
+            return replyResult;
+        }
         reply.setUid(uid);
         reply.setReply_time(new Timestamp(new Date().getTime()));
         reply.setBoard_id(boardId);
         reply.setReply_target_floor(reply_floor);
         System.out.println(reply);
         Integer result=replyService.addReply(reply);
-        ReplyResult replyResult=new ReplyResult();
         replyResult.setFloor(reply.getFloor());
         if(result==1){
             replyResult.setMessage("success");

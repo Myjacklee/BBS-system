@@ -1,9 +1,11 @@
 package com.nuist.controller;
 
 import com.nuist.domain.Board;
+import com.nuist.domain.Message;
 import com.nuist.domain.Post;
 import com.nuist.domain.User;
 import com.nuist.service.BoardService;
+import com.nuist.service.MessageService;
 import com.nuist.service.PostService;
 import com.nuist.service.UserService;
 import org.apache.ibatis.annotations.Param;
@@ -34,8 +36,10 @@ public class HomeController {
     private UserService userService;
     @Autowired
     private BoardService boardService;
+    @Autowired
+    private MessageService messageService;
     @RequestMapping(path = "/index")
-    public String goHome(Model model){
+    public String goHome(Model model,HttpSession session){
         List<Post> list= postService.findAllPost();
         model.addAttribute("postList",list);
         return "home";

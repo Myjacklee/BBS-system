@@ -3,6 +3,7 @@ import com.nuist.domain.Friend;
 import com.nuist.domain.FriendAddRequest;
 import com.nuist.domain.Message;
 import com.nuist.domain.Reply;
+import com.nuist.service.FriendService;
 import com.sun.javaws.IconUtil;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -34,14 +35,14 @@ public class testMybatis {
 //        //获取到代理对象
 //        FriendDao dao=session.getMapper(FriendDao.class);
         ApplicationContext ac =new ClassPathXmlApplicationContext("applicationContext.xml");
-        ReplyDao dao=ac.getBean("replyDao", ReplyDao.class);
+        FriendService service=ac.getBean("friendService", FriendService.class);
         //进行更新操作
 
-        List<Reply> list=dao.findAllReply(20);
+        service.friendRecommend(1);
 //        System.out.println(list);
-        for(Reply message: list){
-            System.out.println(message);
-        }
+//        for(Reply message: list){
+//            System.out.println(message);
+//        }
     }
 
 }

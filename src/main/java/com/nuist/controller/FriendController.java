@@ -4,6 +4,7 @@ import com.nuist.domain.Friend;
 import com.nuist.domain.FriendAddRequest;
 import com.nuist.domain.OperateResult;
 import com.nuist.service.FriendService;
+import com.nuist.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,7 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author LiZonggen
@@ -26,13 +30,17 @@ import java.util.List;
 public class FriendController {
     @Autowired
     private FriendService friendService;
+    @Autowired
+    private UserService userService;
     @RequestMapping("/goFriend")
     public String goFriend(Model model,HttpSession session){
         Integer uid=(Integer) session.getAttribute("uid");
         List<Friend> allFriends=friendService.findAllFriends(uid);
         model.addAttribute("allFriends",allFriends);
         List<FriendAddRequest> allRequest=friendService.getMessage(uid);
+        List<Friend> recommendList=friendService.friendRecommend(uid);
         model.addAttribute("allRequest",allRequest);
+        model.addAttribute("recommendList",recommendList);
         return "friend";
     }
     @RequestMapping("/findFriend")

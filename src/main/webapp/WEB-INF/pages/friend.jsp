@@ -40,7 +40,7 @@
                         }else{
                             alert("搜索成功");
                             for(var i in data){
-                                $("#result").append('<tr><td>'+data[i].uid+'</td><td><a href=${pageContext.request.contextPath}/home/'+data[i].uid+'>'+data[i].nickname+'</a></td><td><button class="btn btn-info" name='+data[i].uid+' id=addFriend>添加好友</button></td></tr>')
+                                $("#result").append('<tr><td>'+data[i].uid+'</td><td><a href=${pageContext.request.contextPath}/home/'+data[i].uid+'>'+data[i].nickname+'</a></td><td><button class="addFriend btn btn-info" name='+data[i].uid+' >添加好友</button></td></tr>')
                             }
                         }
 
@@ -50,8 +50,8 @@
                     }
                 })
             });
-            $("body").on("click","#addFriend",function(){
-                var uid=$("#addFriend").attr("name");
+            $("body").on("click",".addFriend",function(){
+                var uid=$(".addFriend").attr("name");
                 $.ajax({
                     url:"${pageContext.request.contextPath}/friend/addFriend/"+uid,
                     contentType:"application/json;charset=UTF-8",
@@ -125,6 +125,31 @@
         <div class="col-md-8">
             <div class="row">
                 <div class="col-md-12">
+                    <h2>好友推荐列表</h2>
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th>账号</th>
+                            <th>昵称</th>
+                            <th>主页</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody >
+                        <c:forEach items="${recommendList}" var="friend">
+                            <tr>
+                                <td>${friend.uid}</td>
+                                <td>${friend.nickname}</td>
+                                <td><a href="${pageContext.request.contextPath}/home/${friend.uid}">主页</a></td>
+                                <td><button name="${friend.uid}"  class="addFriend btn btn-info">添加</button> </td>
+                            </tr>
+                        </c:forEach>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
                     <h2>好友列表</h2>
                     <table class="table table-hover">
                         <thead>
@@ -137,9 +162,9 @@
                         <tbody id="allFriends">
                         <c:forEach items="${allFriends}" var="friend">
                             <tr>
-                                <th>${friend.uid}</th>
-                                <th>${friend.nickname}</th>
-                                <th><a href="${pageContext.request.contextPath}/home/${friend.uid}">主页</a></th>
+                                <td>${friend.uid}</td>
+                                <td>${friend.nickname}</td>
+                                <td><a href="${pageContext.request.contextPath}/home/${friend.uid}">主页</a></td>
                             </tr>
                         </c:forEach>
                         </tbody>

@@ -18,9 +18,9 @@ import java.util.List;
 public interface MessageDao {
     @Insert("insert into message_remind(message_url,message_content,sender_uid,target_uid,message_time) values(#{message_url},#{message_content},#{sender_uid},#{target_uid},#{message_time})")
     public Integer addMessage(Message message);
-    @Select("select *,user.nickname as sender_name from message_remind,user where target_uid=#{receiverUid} and read_flag=0 and user.uid=message_remind.sender_uid")
+    @Select("select *,user.nickname as sender_name from message_remind,user where target_uid=#{receiverUid} and read_flag=0 and user.uid=message_remind.sender_uid order by message_time desc")
     public List<Message> findNewMessageByReceiverUid(Integer receiverUid);
-    @Select("select *,user.nickname as sender_name from message_remind,user where target_uid=#{receiverUid} and read_flag=1 and user.uid=message_remind.sender_uid")
+    @Select("select *,user.nickname as sender_name from message_remind,user where target_uid=#{receiverUid} and read_flag=1 and user.uid=message_remind.sender_uid order by message_time desc")
     public List<Message> findHistoryMessageByReceiverUid(Integer receiverUid);
     @Update("update message_remind set read_flag=1 where target_uid=#{receiverUid} and read_flag=0")
     public Integer readAllMessage(Integer receiverUid);

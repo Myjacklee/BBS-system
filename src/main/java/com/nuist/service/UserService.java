@@ -2,6 +2,9 @@ package com.nuist.service;
 
 import com.nuist.domain.User;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public interface UserService {
     //检查账号是否重复
     public Integer registerCheck(User user);
@@ -13,4 +16,6 @@ public interface UserService {
     public Integer updateUser(User user);
     //按uid进行查找用户
     public User findUserByUid(Integer uid);
+
+
 }

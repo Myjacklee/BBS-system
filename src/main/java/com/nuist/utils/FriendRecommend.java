@@ -229,6 +229,16 @@ public class FriendRecommend {
                 recommendList.add(NeighborUidList.get(i));
             }
         }
+        //对处理后的结果做出判断，如果结果集的大小为0，则在不是好友中的用户中随机推荐好友
+        if(recommendList.size()==0){
+            if(notFriendsList.size()<recommendNum){
+                recommendList=notFriendsList;
+            }else{
+                for(int i=notFriendsList.size()-1;i>=notFriendsList.size()-recommendNum;i--){
+                    recommendList.add(notFriendsList.get(i));
+                }
+            }
+        }
         return recommendList;
     }
 

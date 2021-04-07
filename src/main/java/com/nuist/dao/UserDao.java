@@ -4,6 +4,9 @@ import com.nuist.domain.User;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Repository
 public interface UserDao {
@@ -24,4 +27,6 @@ public interface UserDao {
     public Integer updateUser(User user);
     @Select("select nickname,school,college,uid,class as studentClass from user where uid=#{uid}")
     public User findUserByUid(Integer uid);
+    @Select("select uid from user")
+    public List<Integer> findAllUserUid();
 }

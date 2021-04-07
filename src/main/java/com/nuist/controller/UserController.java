@@ -1,10 +1,12 @@
 package com.nuist.controller;
 
 import com.nuist.domain.Board;
+import com.nuist.domain.Message;
 import com.nuist.domain.User;
 import com.nuist.domain.RegisterCheckRes;
 import com.nuist.exception.SysException;
 import com.nuist.service.BoardService;
+import com.nuist.service.MessageService;
 import com.nuist.service.UserService;
 import org.omg.PortableInterceptor.INACTIVE;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -31,6 +35,8 @@ public class UserController {
     private UserService userService;
     @Autowired
     private BoardService boardService;
+    @Autowired
+    private MessageService messageService;
     @RequestMapping(path = "/goRegister")
     public String goRegister(){
         return "register";
@@ -96,6 +102,15 @@ public class UserController {
         if(result!=null){
             session.setAttribute("uid",result.getUid());
             session.setAttribute("user",result);
+
+            Message message=new Message();
+            message.setTarget_uid((Integer) session.getAttribute("uid"));
+            message.setSender_uid(1);
+            message.setMessage_content("您有新的好友推荐");
+            message.setMessage_url("/friend/goFriend");
+            message.setMessage_time(new Timestamp(new Date().getTime()));
+            messageService.addMessage(message);
+
             System.out.println(result);
             return "redirect:/home/index";
         }else{

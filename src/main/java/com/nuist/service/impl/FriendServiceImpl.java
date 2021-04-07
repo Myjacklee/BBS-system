@@ -2,10 +2,12 @@ package com.nuist.service.impl;
 
 import com.nuist.dao.FriendDao;
 import com.nuist.dao.MessageDao;
+import com.nuist.dao.UserDao;
 import com.nuist.domain.Friend;
 import com.nuist.domain.FriendAddRequest;
 import com.nuist.domain.Message;
 import com.nuist.service.FriendService;
+import com.nuist.utils.FriendRecommend;
 import com.nuist.utils.MD5Util;
 import com.nuist.websocket.MessageWebSocket;
 import com.sun.xml.internal.ws.developer.Serialization;
@@ -13,8 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author LiZonggen
@@ -28,6 +29,8 @@ public class FriendServiceImpl implements FriendService {
     private FriendDao friendDao;
     @Autowired
     private MessageDao messageDao;
+    @Autowired
+    private UserDao userDao;
     @Override
     public List<Friend> findFriend(Friend friend) {
         return friendDao.findFriend(friend);
@@ -89,4 +92,30 @@ public class FriendServiceImpl implements FriendService {
     public List<Friend> findAllFriends(Integer uid) {
         return friendDao.findAllFriends(uid);
     }
+
+    @Override
+    public List<Friend> friendRecommend(Integer uid) {
+        List<Integer> allUserUid=userDao.findAllUserUid();
+        Map<Integer,ArrayList<Integer>> allUserFriend=new HashMap<>();
+        for(Integer userUid:allUserUid){
+            ArrayList<Integer> list=friendDao.findAllFriendUid(userUid);
+            allUserFriend.put(userUid,list);
+        }
+        FriendRecommend.showAll(allUserFriend);
+        List<Integer> list=FriendRecommend.commonNeighbors(allUserFriend,uid);
+
+        for(Integer a:list){
+            System.out.println(a);
+        }
+        List<Friend> recommendList=new ArrayList<>();
+        for(Integer a:list){
+            recommendList.add(friendDao.findFriendByUid(a));
+        }
+        for(Friend a:recommendList){
+            System.out.println(a);
+        }
+        return recommendList;
+    }
+
+
 }

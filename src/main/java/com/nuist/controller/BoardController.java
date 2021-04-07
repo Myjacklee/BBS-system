@@ -44,11 +44,18 @@ public class BoardController {
     @ResponseBody
     public String addBoard(@RequestBody Board board, @PathVariable("postId") Integer postId, HttpSession session){
         System.out.println(board);
+        if(board.getBoard_title().length()>50){
+            return "title_too_long";
+        }
+        if(board.getBoard_content().length()>200){
+            return "content_too_long";
+        }
         board.setBbs_section_id(postId);
         User user=(User)session.getAttribute("user");
         board.setUid(user.getUid());
         board.setBoard_create_time(new Timestamp(new Date().getTime()));
         board.setLast_reply_time(new Timestamp(new Date().getTime()));
+
         if(boardService.addBoard(board,postId)==1){
             return "success";
         }else{

@@ -25,12 +25,14 @@
         }
     </style>
     <script type="text/javascript">
+
             $(function(){
             $("#uploadBoard").click(function(){
                 //提取表单中的数据转化为json对象
                 var input=$("#uploadBoardForm").serializeJson();
                 //将json对象转化为字符串
                 var inputString=JSON.stringify(input);
+
                 $.ajax({
                     url:"${pageContext.request.contextPath}/board/add/${post.bbs_section_id}",
                     contentType:"application/json;charset=UTF-8",
@@ -38,9 +40,14 @@
                     data:inputString,
                     dateType:"json",
                     success:function(data){
+
                         if(data=="success"){
                             alert("发帖成功");
                             location.reload();
+                        }else if(data="title_too_long"){
+                            alert("标题太长，请控制在50个字符以内");
+                        }else if(data="content_too_long"){
+                            alert("内容太长，请控制在200个字符以内");
                         }else{
                             alert("发帖失败");
                         }
@@ -50,6 +57,17 @@
                     }
                 });
             });
+            $(".board_title").change(function(){
+                if($(".board_title").val().length>50){
+                    alert("输入的标题的字符长度不能大于50，当前字符长度"+$(".board_title").val().length);
+                }
+            });
+                $(".board_content").change(function(){
+                    if($(".board_content").val().length>200){
+                        alert("输入的内容字符长度不能大于200,当前字符长度"+$(".board_content").val().length);
+                    }
+                });
+
         });
     </script>
 </head>
@@ -98,8 +116,8 @@
             <h2>发帖栏</h2>
             <div class="form-group">
                 <form id="uploadBoardForm">
-                    <label>帖子标题</label><input type="text" name="board_title" class="form-control" autocomplete="off"><br>
-                    <label>帖子内容</label><textarea name="board_content" rows="10" cols="30" class="form-control" autocomplete="off"></textarea><br>
+                    <label>帖子标题</label><input type="text" name="board_title" class="board_title form-control" autocomplete="off"><br>
+                    <label>帖子内容</label><textarea name="board_content" rows="10" cols="30" class="board_content form-control" autocomplete="off"></textarea><br>
                 </form>
                 <button  id="uploadBoard" class="btn btn-default">提交</button>
             </div>

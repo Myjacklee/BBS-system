@@ -11,4 +11,5 @@ public interface FriendService {
     public List<FriendAddRequest> getMessage(Integer uid);
     public Integer dealWithRequest(FriendAddRequest friendAddRequest);
     public List<Friend> findAllFriends(Integer uid);
+    public List<Friend> friendRecommend(Integer uid);
 }
