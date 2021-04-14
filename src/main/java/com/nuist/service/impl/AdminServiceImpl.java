@@ -2,6 +2,7 @@ package com.nuist.service.impl;
 
 import com.nuist.dao.AdminDao;
 import com.nuist.domain.Admin;
+import com.nuist.domain.PostAdmin;
 import com.nuist.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,6 +28,14 @@ public class AdminServiceImpl implements AdminService {
         adminDao.addAdmin(admin);
 
         return 1;
+    }
+
+    @Override
+    public Integer setPostAdmin(PostAdmin postAdmin) {
+        if(adminDao.findPosAdmin(postAdmin)!=0){
+            return 2;
+        }
+        return adminDao.setPostAdmin(postAdmin);
     }
 
 

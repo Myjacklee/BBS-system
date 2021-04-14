@@ -57,5 +57,19 @@ public class BoardServiceImpl implements BoardService {
         }
     }
 
+    @Override
+    public String adminDeleteBoard(Integer postId, Integer boardId,Integer uid) {
+        if(postDao.confirmAdmin(postId,uid)==0){
+            return "2";
+        }
+        replyDao.deleteReplyByBoardId(boardId);
+        if(boardDao.adminDeleteBoardByBoardId(boardId,postId)==1){
+
+            return "1";
+        }else{
+            return "0";
+        }
+    }
+
 
 }

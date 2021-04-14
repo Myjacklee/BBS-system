@@ -12,4 +12,5 @@ public interface FriendService {
     public Integer dealWithRequest(FriendAddRequest friendAddRequest);
     public List<Friend> findAllFriends(Integer uid);
     public List<Friend> friendRecommend(Integer uid);
+    public Integer  deleteFriendById(Integer friendId,Integer uid);
 }

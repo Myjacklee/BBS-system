@@ -32,7 +32,6 @@ public class ReplyController {
     public ReplyResult addReply(@RequestBody Reply reply, @PathVariable("reply_floor") Integer reply_floor,@PathVariable("boardId") Integer boardId, HttpSession session){
         Integer uid=(Integer) session.getAttribute("uid");
         ReplyResult replyResult=new ReplyResult();
-
         if(reply.getReply_content().length()>200){
             replyResult.setMessage("fail");
             return replyResult;

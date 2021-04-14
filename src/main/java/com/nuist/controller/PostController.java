@@ -32,7 +32,6 @@ public class PostController {
 
     @RequestMapping(path = "/{postId}")
     public String goPost(Model model, @PathVariable("postId")Integer postId){
-
         Post post=postService.findPostById(postId);
         if(post==null){
             model.addAttribute("message","访问的板块不存在");

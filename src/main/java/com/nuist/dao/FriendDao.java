@@ -18,7 +18,7 @@ public interface FriendDao {
     public Integer sendAddFriendRequest(@Param("sender") Integer senderUid, @Param("receiver") Integer receiverUid,@Param("md5_code") String md5_code);
     @Select("select add_friend_request.sender_uid as uid,user.nickname,add_friend_request.request_id as request_id,add_friend_request.md5_code as md5_code from add_friend_request,user where add_friend_request.receiver_uid=#{uid} and add_friend_request.states=0 and user.uid=add_friend_request.sender_uid")
     public List<FriendAddRequest> getMessage(Integer uid);
-    @Update("update add_friend_request set states=#{states} where request_id=#{request_id} and md5_code=#{md5_code}")
+    @Update("update add_friend_request set states=#{states} where request_id=#{request_id} and md5_code=#{md5_code} and states=0")
     @SelectKey(keyColumn = "sender_uid",keyProperty = "uid",before = false,statement = "select sender_uid from add_friend_request where request_id=#{request_id}",resultType = Integer.class)
     public Integer dealWithRequest(FriendAddRequest friendAddRequest);
     @Insert("insert into relationship(user_A,user_B) values(#{A},#{B})")
@@ -27,4 +27,6 @@ public interface FriendDao {
     public List<Friend> findAllFriends(Integer uid);
     @Select("select relationship.user_B as uid from relationship where relationship.user_A=#{uid}   union select relationship.user_A as uid  from relationship where relationship.user_B=#{uid} ")
     public ArrayList<Integer> findAllFriendUid(Integer uid);
+    @Delete("delete from relationship where (user_A=#{friendId} and user_B=#{uid}) or (user_A=#{uid} and user_B=#{friendId})")
+    public Integer deleteFriendById(@Param("friendId") Integer FriendId,@Param("uid") Integer uid);
 }

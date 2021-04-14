@@ -156,7 +156,7 @@
                         <tr>
                             <th>账号</th>
                             <th>昵称</th>
-                            <th>主页</th>
+                            <th>操作</th>
                         </tr>
                         </thead>
                         <tbody id="allFriends">
@@ -164,7 +164,7 @@
                             <tr>
                                 <td>${friend.uid}</td>
                                 <td>${friend.nickname}</td>
-                                <td><a href="${pageContext.request.contextPath}/home/${friend.uid}">主页</a></td>
+                                <td><a href="${pageContext.request.contextPath}/home/${friend.uid}">主页</a>&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/friend/delete/${friend.uid}">删除</a></td>
                             </tr>
                         </c:forEach>
                         </tbody>

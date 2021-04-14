@@ -65,7 +65,6 @@ public class FriendServiceImpl implements FriendService {
     @Override
     public Integer dealWithRequest(FriendAddRequest friendAddRequest) {
         Message message=new Message();
-
         if(friendAddRequest.getStates()==1&&friendDao.dealWithRequest(friendAddRequest)==1){
             friendDao.addFriend(friendAddRequest.getUid(), friendAddRequest.getReceiver_uid());
             message.setMessage_url("/friend/goFriend");
@@ -74,8 +73,8 @@ public class FriendServiceImpl implements FriendService {
             message.setTarget_uid(friendAddRequest.getUid());
             messageDao.addMessage(message);
             return 1;
-        }else if(friendAddRequest.getStates()==2){
-            friendDao.dealWithRequest(friendAddRequest);
+        }else if(friendAddRequest.getStates()==2&&friendDao.dealWithRequest(friendAddRequest)==1){
+
             message.setMessage_url("/friend/goFriend");
             message.setMessage_content("拒绝了您的好友请求");
             message.setSender_uid(friendAddRequest.getReceiver_uid());
@@ -83,9 +82,9 @@ public class FriendServiceImpl implements FriendService {
             messageDao.addMessage(message);
             return 0;
         }else{
-            return 0;
-        }
 
+            return 2;
+        }
     }
 
     @Override
@@ -115,6 +114,11 @@ public class FriendServiceImpl implements FriendService {
             System.out.println(a);
         }
         return recommendList;
+    }
+
+    @Override
+    public Integer deleteFriendById(Integer friendId,Integer uid) {
+        return friendDao.deleteFriendById(friendId,uid);
     }
 
 

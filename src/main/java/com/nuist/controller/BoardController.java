@@ -5,6 +5,7 @@ import com.nuist.domain.Reply;
 import com.nuist.domain.User;
 import com.nuist.service.BoardService;
 import com.nuist.service.ReplyService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -55,13 +56,11 @@ public class BoardController {
         board.setUid(user.getUid());
         board.setBoard_create_time(new Timestamp(new Date().getTime()));
         board.setLast_reply_time(new Timestamp(new Date().getTime()));
-
         if(boardService.addBoard(board,postId)==1){
             return "success";
         }else{
             return "fail";
         }
-
     }
     @RequestMapping("/delete/{boardId}")
     public String deleteBoard(@PathVariable("boardId") Integer boardId,HttpSession session){
@@ -69,5 +68,16 @@ public class BoardController {
         System.out.println(uid);
         boardService.deleteBoardByBoardId(uid,boardId);
         return "redirect:/manage/home";
+    }
+    @RequestMapping(path = "/adminDeleteBoard/{postId}/{boardId}")
+    @ResponseBody
+    public String adminDeleteBoard(@PathVariable("postId") Integer postId,@PathVariable("boardId")Integer boardId,HttpSession session){
+        Integer uid=(Integer)session.getAttribute("uid");
+        /*
+        * 1 删除成功
+        * 2 无权限删除
+        * 0 删除失败
+        * */
+        return boardService.adminDeleteBoard(postId,boardId,uid);
     }
 }

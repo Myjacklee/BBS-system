@@ -25,7 +25,28 @@
         }
     </style>
     <script type="text/javascript">
+            function deleteBoard(boardId){
+                $.ajax({
+                    url:"${pageContext.request.contextPath}/board/adminDeleteBoard/${post.bbs_section_id}/"+boardId,
+                    contentType:"application/json;charset=UTF-8",
+                    type:"POST",
+                    dateType:"json",
+                    success:function(data){
 
+                        if(data=="1"){
+                            alert("删除成功");
+                            location.reload();
+                        }else if(data=="0"){
+                            alert("删除失败");
+                        }else{
+                            alert("无权限访问");
+                        }
+                    },
+                    error: function(XMLHttpRequest){
+                        alert( "Error: " + XMLHttpRequest.responseText);
+                    }
+                });
+            }
             $(function(){
             $("#uploadBoard").click(function(){
                 //提取表单中的数据转化为json对象
@@ -79,6 +100,7 @@
         <h2>${post.section_name}</h2>
         <p>${post.post_describe}</p>
         <p>版块帖子数:${post.post_num}</p>
+        <p>版主:<c:if test="${post.adminUid==null}">暂未设置</c:if> <a href="${pageContext.request.contextPath}/home/${post.adminUid}">${post.adminNickname}</a></p>
     </div>
     <div class="row">
         <div class="col-md-12">
@@ -93,6 +115,7 @@
                     <th>回帖数</th>
                     <th>创建时间</th>
                     <th>最后回复时间</th>
+                    <c:if test="${sessionScope.uid eq post.adminUid}"><th>操作</th></c:if>
                 </tr>
                 </thead>
                 <c:forEach items="${allBoard}" var="board">
@@ -105,6 +128,7 @@
                         <td>${board.board_reply_num}</td>
                         <td>${board.board_create_time}</td>
                         <td>${board.last_reply_time}</td>
+                        <c:if test="${sessionScope.uid eq post.adminUid}"><td><button onclick="deleteBoard(${board.board_id})" class="btn btn-danger" >删除</button></td></c:if>
                     </tr>
                     </tbody>
                 </c:forEach>

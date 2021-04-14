@@ -1,6 +1,5 @@
 package com.nuist.controller;
 
-import com.nuist.domain.Board;
 import com.nuist.domain.Message;
 import com.nuist.domain.User;
 import com.nuist.domain.RegisterCheckRes;
@@ -8,11 +7,9 @@ import com.nuist.exception.SysException;
 import com.nuist.service.BoardService;
 import com.nuist.service.MessageService;
 import com.nuist.service.UserService;
-import org.omg.PortableInterceptor.INACTIVE;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -20,7 +17,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpSession;
 import java.sql.Timestamp;
 import java.util.Date;
-import java.util.List;
 
 /**
  * @author LiZonggen
@@ -37,6 +33,7 @@ public class UserController {
     private BoardService boardService;
     @Autowired
     private MessageService messageService;
+
     @RequestMapping(path = "/goRegister")
     public String goRegister(){
         return "register";
@@ -49,14 +46,12 @@ public class UserController {
 
     @RequestMapping(path="/register")
     public String register(User user,Model model)  throws SysException{
-
         try{
             if(user.isEmpty()){
                 return "register";
             } else if(userService.registerCheck(user)==0){
                 Integer result= userService.register(user);
                 return "login";
-
             }else{
                 model.addAttribute("user",user);
                 model.addAttribute("message","该邮箱已被注册账号，请更换邮箱注册");
@@ -102,7 +97,6 @@ public class UserController {
         if(result!=null){
             session.setAttribute("uid",result.getUid());
             session.setAttribute("user",result);
-
             Message message=new Message();
             message.setTarget_uid((Integer) session.getAttribute("uid"));
             message.setSender_uid(1);
@@ -110,7 +104,6 @@ public class UserController {
             message.setMessage_url("/friend/goFriend");
             message.setMessage_time(new Timestamp(new Date().getTime()));
             messageService.addMessage(message);
-
             System.out.println(result);
             return "redirect:/home/index";
         }else{

@@ -35,10 +35,10 @@ public class testMybatis {
 //        //获取到代理对象
 //        FriendDao dao=session.getMapper(FriendDao.class);
         ApplicationContext ac =new ClassPathXmlApplicationContext("applicationContext.xml");
-        FriendService service=ac.getBean("friendService", FriendService.class);
+        PostDao service=ac.getBean("postDao", PostDao.class);
         //进行更新操作
 
-        service.friendRecommend(1);
+        System.out.println( service.findPostById(3));
 //        System.out.println(list);
 //        for(Reply message: list){
 //            System.out.println(message);

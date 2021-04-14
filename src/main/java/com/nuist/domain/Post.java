@@ -11,6 +11,24 @@ public class Post {
     private String section_name;
     private Integer post_num;
     private String post_describe;
+    private Integer adminUid;
+    private String adminNickname;
+
+    public String getAdminNickname() {
+        return adminNickname;
+    }
+
+    public void setAdminNickname(String adminNickname) {
+        this.adminNickname = adminNickname;
+    }
+
+    public Integer getAdminUid() {
+        return adminUid;
+    }
+
+    public void setAdminUid(Integer adminUid) {
+        this.adminUid = adminUid;
+    }
 
     public Integer getBbs_section_id() {
         return bbs_section_id;
@@ -42,5 +60,17 @@ public class Post {
 
     public void setPost_describe(String post_describe) {
         this.post_describe = post_describe;
+    }
+
+    @Override
+    public String toString() {
+        return "Post{" +
+                "bbs_section_id=" + bbs_section_id +
+                ", section_name='" + section_name + '\'' +
+                ", post_num=" + post_num +
+                ", post_describe='" + post_describe + '\'' +
+                ", adminUid=" + adminUid +
+                ", adminNickname='" + adminNickname + '\'' +
+                '}';
     }
 }
