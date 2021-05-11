@@ -14,12 +14,30 @@ public class Reply {
     private String board_title;
     private Integer uid;
     private String nickname;
+    private String headURL;
     private String reply_content;
     private Timestamp reply_time;
     private Integer floor;
+    private Integer senderBoardNum;
 
     private Integer reply_target_floor;
     private String reply_target_content;
+
+    public Integer getSenderBoardNum() {
+        return senderBoardNum;
+    }
+
+    public void setSenderBoardNum(Integer senderBoardNum) {
+        this.senderBoardNum = senderBoardNum;
+    }
+
+    public String getHeadURL() {
+        return headURL;
+    }
+
+    public void setHeadURL(String headURL) {
+        this.headURL = headURL;
+    }
 
     public Integer getReply_target_floor() {
         return reply_target_floor;
@@ -45,6 +63,7 @@ public class Reply {
         this.board_title = board_title;
     }
 
+
     @Override
     public String toString() {
         return "Reply{" +
@@ -53,9 +72,11 @@ public class Reply {
                 ", board_title='" + board_title + '\'' +
                 ", uid=" + uid +
                 ", nickname='" + nickname + '\'' +
+                ", headURL='" + headURL + '\'' +
                 ", reply_content='" + reply_content + '\'' +
                 ", reply_time=" + reply_time +
                 ", floor=" + floor +
+                ", senderBoardNum=" + senderBoardNum +
                 ", reply_target_floor=" + reply_target_floor +
                 ", reply_target_content='" + reply_target_content + '\'' +
                 '}';

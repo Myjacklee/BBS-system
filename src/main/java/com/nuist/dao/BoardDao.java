@@ -13,7 +13,7 @@ public interface BoardDao {
     public List<Board> findAllBoard(Integer postId);
     @Insert("insert into board(bbs_section_id,uid,board_title,board_content,board_create_time,last_reply_time) values(#{bbs_section_id},#{uid},#{board_title},#{board_content},#{board_create_time},#{last_reply_time})")
     public Integer addBoard(Board board);
-    @Select("select *,user.nickname as nickname from board,user where board_id=#{board_id} and board.uid=user.uid")
+    @Select("select *,user.nickname as nickname,user.head_url as headURL from board,user where board_id=#{board_id} and board.uid=user.uid")
     public Board findBoardById(Integer board_id);
     @Update("update board set board_reply_num=board_reply_num+1 where board_id=#{boardId}")
     public Integer addReplyNum(Integer boardId);

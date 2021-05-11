@@ -20,6 +20,15 @@ public class User implements Serializable {
     private String studentClass;
     private Integer uid;
     private Date sign_date;
+    private String headURL;
+
+    public String getHeadURL() {
+        return headURL;
+    }
+
+    public void setHeadURL(String headURL) {
+        this.headURL = headURL;
+    }
 
     public String getNew_password() {
         return new_password;
@@ -116,6 +125,7 @@ public class User implements Serializable {
                 ", studentClass='" + studentClass + '\'' +
                 ", uid=" + uid +
                 ", sign_date=" + sign_date +
+                ", headURL='" + headURL + '\'' +
                 '}';
     }
 

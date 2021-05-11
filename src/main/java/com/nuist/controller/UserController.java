@@ -51,6 +51,7 @@ public class UserController {
                 return "register";
             } else if(userService.registerCheck(user)==0){
                 Integer result= userService.register(user);
+                model.addAttribute("user",user);
                 return "login";
             }else{
                 model.addAttribute("user",user);

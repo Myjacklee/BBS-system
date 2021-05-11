@@ -113,6 +113,7 @@ public class FriendRecommend {
         key.set(l,keyX);
         return l;
     }
+    //按map的值对map进行快速排序
     private static void quickSort(List<Integer> value,List<Integer> key,int left,int right){
         if(left<right){
             int center=exchange(value,key,left,right);
@@ -186,45 +187,68 @@ public class FriendRecommend {
     * @return: java.util.List<java.lang.Integer>
     */
     public static List<Integer> commonNeighbors(Map<Integer,ArrayList<Integer>> data,Integer user){
+        //初始化不是目标用户好友的集合
         ArrayList<Integer> notFriendsList=new ArrayList<>();
+        //遍历好友集合，如果不是目标用户的好友则放入notFriendsList集合中
         for(Map.Entry<Integer,ArrayList<Integer>> entry:data.entrySet()){
+            //判断条件为目标用户不在某一用户的好友聊表当中
             if(data.get(user).indexOf(entry.getKey())==-1&&entry.getKey()!=user){
+                //加入非好友集合
                 notFriendsList.add(entry.getKey());
             }
         }
+        //该集合用于储存目标用户与目标用户的非好友的共同好友的数量
         HashMap<Integer,Integer> commonNeighbor=new HashMap<>();
+        //依次遍历非好友列表
         for(int i=0;i<notFriendsList.size();i++){
+            //内层循环为目标用户的好友列表遍历
             for(int j=0;j<data.get(user).size();j++)
+            //判断目标用户的好友是否在其它用户的好友列表中
             if(data.get(notFriendsList.get(i)).indexOf(data.get(user).get(j))!=-1){
+                //如果在列表当中则表示存在共同好友
+
+                //判断在共同好友集合中是否是第一次出现
                 if(commonNeighbor.get(notFriendsList.get(i))==null){
+                    //第一次出现，将hashmap的初始值赋值为1
                     commonNeighbor.put(notFriendsList.get(i),1);
                 }else{
+                    //不是第一次出现，在原来的基础上做+1的操作
                     commonNeighbor.put(notFriendsList.get(i),commonNeighbor.get(notFriendsList.get(i))+1);
                 }
             }
         }
-        //输出出现的次数
+        //输出共同好友的出现的次数
         System.out.println("\n每个用户出现的重复的邻居数为");
         for(Map.Entry<Integer, Integer> entry:commonNeighbor.entrySet()){
             System.out.println("用户 "+entry.getKey()+ " 重复的邻居数为："+entry.getValue());
         }
+        //使用快速排序排序对结果按用户出现的次数从小到大排序
+
+        //共同好友的uid
         List<Integer> NeighborUidList=new ArrayList<>();
+        //每个共同好友出现的次数
         List<Integer> NumList=new ArrayList<>();
         for(Map.Entry<Integer, Integer> entry:commonNeighbor.entrySet()){
             NeighborUidList.add(entry.getKey());
             NumList.add(entry.getValue());
         }
+        /*
+        * 使用快速排序对结果进行排序，排序时判断依据为出现的次数，用户的uid需要同时进行重新排序
+        * */
         quickSort(NumList,NeighborUidList,0,NumList.size()-1);
         System.out.println("排序后");
         for(int i=0;i<NumList.size();i++){
             System.out.println("重复的邻居数为 "+NumList.get(i)+" 用户："+NeighborUidList.get(i));
         }
+        //目标用户的推荐列表
         List<Integer> recommendList=new ArrayList<>();
         if(NeighborUidList.size()<recommendNum){
+            //如果生成的列表的大小小于推荐数量，则将结果全部输出
             for(int i=NeighborUidList.size()-1;i>=0;i--){
                 recommendList.add(NeighborUidList.get(i));
             }
         }else{
+            //如果生成的列表的大小大于等于推荐数量，则按推荐数量选择出现次数较多的前N个用户进行推荐
             for(int i=NeighborUidList.size()-1;i>=NeighborUidList.size()-recommendNum;i--){
                 recommendList.add(NeighborUidList.get(i));
             }

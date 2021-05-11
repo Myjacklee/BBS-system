@@ -48,6 +48,26 @@
                 }
             });
 
+            $("#upload").click(function(){
+                    var formData=new FormData($("#userHeadImage")[0]);
+                    $.ajax({
+                        url:"${pageContext.request.contextPath}/manage/upload",
+                        type:"post",
+                        data:formData,
+                        dateType:"json",
+                        success:function(data){
+                            if(data=="success"){
+                                alert("上传成功");
+                            }else{
+                                alert("上传失败");
+                            }
+                        },
+                        error: function(XMLHttpRequest){
+                            alert( "Error: " + XMLHttpRequest.responseText);
+                        }
+                    });
+
+            });
         });
 
 
@@ -75,6 +95,23 @@
 
             </form>
             <button id="uploadInformation" class="btn btn-primary">确认更改</button>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <c:if test="${message!=null}">
+            <div class="alert alert-info" >${message}</div>
+        </c:if>
+        <div class="col-md-4 col-md-offset-4">
+            <h2>个人头像修改</h2>
+            <form id="userHeadImage" method="post" action="${pageContext.request.contextPath}/manage/upload" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label>请选择头像</label><input  name="userHead" type="file"  /><br>
+                    <input type="submit" value="点击上传" class="btn btn-primary"/>
+                </div>
+
+            </form>
         </div>
 
     </div>

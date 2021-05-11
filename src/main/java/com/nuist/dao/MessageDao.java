@@ -2,6 +2,7 @@ package com.nuist.dao;
 
 import com.nuist.domain.Message;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
@@ -26,4 +27,5 @@ public interface MessageDao {
     public Integer readAllMessage(Integer receiverUid);
     @Select("select count(*) from message_remind where target_uid=#{uid} and read_flag=0")
     public Integer getMessageNum(Integer uid);
+
 }

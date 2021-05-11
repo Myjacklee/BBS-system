@@ -1,8 +1,5 @@
 import com.nuist.dao.*;
-import com.nuist.domain.Friend;
-import com.nuist.domain.FriendAddRequest;
-import com.nuist.domain.Message;
-import com.nuist.domain.Reply;
+import com.nuist.domain.*;
 import com.nuist.service.FriendService;
 import com.sun.javaws.IconUtil;
 import org.apache.ibatis.io.Resources;
@@ -35,14 +32,55 @@ public class testMybatis {
 //        //获取到代理对象
 //        FriendDao dao=session.getMapper(FriendDao.class);
         ApplicationContext ac =new ClassPathXmlApplicationContext("applicationContext.xml");
-        PostDao service=ac.getBean("postDao", PostDao.class);
+        ReplyDao service=ac.getBean("replyDao", ReplyDao.class);
         //进行更新操作
 
-        System.out.println( service.findPostById(3));
+        System.out.println( service.findUidByBoardIdAndFloor(8,-1));
 //        System.out.println(list);
 //        for(Reply message: list){
 //            System.out.println(message);
 //        }
+    }
+
+    @Test
+    public void run2() throws Exception {
+//        //加载配置文件
+//        InputStream in = Resources.getResourceAsStream("applicationContext.xml");
+//        //创建SqlSessionFactory对象
+//        SqlSessionFactory factory=new SqlSessionFactoryBuilder().build(in);
+//        //创建SqlSession对象
+//        SqlSession session=factory.openSession();
+//        //获取到代理对象
+//        FriendDao dao=session.getMapper(FriendDao.class);
+        ApplicationContext ac =new ClassPathXmlApplicationContext("applicationContext.xml");
+        ReplyDao service=ac.getBean("replyDao", ReplyDao.class);
+        //进行更新操作
+
+        List<Reply> list=service.findAllReply(8);
+//        System.out.println(list);
+        for(Reply message: list){
+            System.out.println(message);
+        }
+    }
+    @Test
+    public void run3() throws Exception {
+//        //加载配置文件
+//        InputStream in = Resources.getResourceAsStream("applicationContext.xml");
+//        //创建SqlSessionFactory对象
+//        SqlSessionFactory factory=new SqlSessionFactoryBuilder().build(in);
+//        //创建SqlSession对象
+//        SqlSession session=factory.openSession();
+//        //获取到代理对象
+//        FriendDao dao=session.getMapper(FriendDao.class);
+        ApplicationContext ac =new ClassPathXmlApplicationContext("applicationContext.xml");
+        ReplyDao service=ac.getBean("replyDao", ReplyDao.class);
+        //进行更新操作
+
+        List<Reply> list=service.findAllReply(19);
+//        System.out.println(list);
+        for(Reply message: list){
+            System.out.println(message);
+        }
     }
 
 }

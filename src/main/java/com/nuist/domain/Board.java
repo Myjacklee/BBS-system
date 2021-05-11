@@ -16,11 +16,20 @@ public class Board implements Serializable {
     private String section_name;
     private Integer uid;
     private String nickname;
+    private String headURL;
     private String board_title;
     private String board_content;
     private Integer board_reply_num;
     private Timestamp board_create_time;
     private Timestamp last_reply_time;
+
+    public String getHeadURL() {
+        return headURL;
+    }
+
+    public void setHeadURL(String headURL) {
+        this.headURL = headURL;
+    }
 
     public String getSection_name() {
         return section_name;

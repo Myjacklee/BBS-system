@@ -39,8 +39,8 @@
             </c:if>
             <form method="post" action="${pageContext.request.contextPath}/user/login">
                 <div class="form-group">
-                    <label>邮箱：</label><input name="email" type="email" value="${email}" class="form-control"><br>
-                    <label>密码：</label><input name="password" type="password" value="${password}" class="form-control"><br>
+                    <label>邮箱：</label><input name="email" type="email" value="${user.email}" class="form-control"><br>
+                    <label>密码：</label><input name="password" type="password" value="${user.password}" class="form-control"><br>
                     <input type="submit" class="btn btn-primary" value="登录">
                 </div>
             </form>

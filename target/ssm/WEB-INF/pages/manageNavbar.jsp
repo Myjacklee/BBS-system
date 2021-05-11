@@ -18,11 +18,30 @@
             $("#comeDay").text(dayCount);
         }
     </script>
+    <style>
+        .img-thumbnail{
+            width: 150px;
+            height: 150px;
+        }
+    </style>
 </head>
 <body>
 <div class="jumbotron">
-    <h2>欢迎${userInformation.nickname}</h2>
-    <p>你加入BBS已经<span id="comeDay"></span>天了，很高兴与你相伴！</p>
+    <div class="row">
+        <div class="col-md-10">
+            <h2>欢迎${userInformation.nickname}</h2>
+            <p>你加入BBS已经<span id="comeDay"></span>天了，很高兴与你相伴！</p>
+        </div>
+        <div class="col-md-2">
+            <c:if test="${userInformation.headURL==null}">
+                <img src="${pageContext.request.contextPath}/images/chatHead.jpg" class="img-thumbnail" alt="头像">
+            </c:if>
+            <c:if test="${userInformation.headURL!=null}">
+                <img src="${pageContext.request.contextPath}/uploads/${userInformation.headURL}" class="img-thumbnail" alt="头像">
+            </c:if>
+        </div>
+    </div>
+
 </div>
 <ul class="nav nav-tabs">
     <c:choose>

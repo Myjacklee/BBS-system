@@ -51,7 +51,7 @@
                 })
             });
             $("body").on("click",".addFriend",function(){
-                var uid=$(".addFriend").attr("name");
+                var uid=$(this).attr("name");
                 $.ajax({
                     url:"${pageContext.request.contextPath}/friend/addFriend/"+uid,
                     contentType:"application/json;charset=UTF-8",

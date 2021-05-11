@@ -35,7 +35,7 @@
                     success:function(data){
                         if(data=="success"){
                             alert("设置成功");
-
+                            window.location.reload();
                         }else if(data=="contain"){
                             alert("已将该该用户设置为版块管理员");
                         }else{
@@ -78,7 +78,7 @@
                         <td><c:if test="${post.adminUid==null}">暂未设置</c:if>${post.adminUid}</td>
                         <td>${post.post_num}</td>
                         <td>${post.post_describe}</td>
-                        <td><button class="btn btn-danger" >禁用</button> <button class="btn btn-info" onclick="setPostAdmin(${post.bbs_section_id})">设置版主</button></td>
+                        <td><button class="btn btn-info" onclick="setPostAdmin(${post.bbs_section_id})">设置版主</button></td>
                     </tr>
                 </c:forEach>
                 </tbody>
@@ -95,8 +95,8 @@
                     <label>版块名称</label><input type="text" name="section_name" required="required" placeholder="版块名称" class="form-control" autocomplete="off">
                     <label>简介</label><textarea name="post_describe" required="required" rows="10" cols="30" class="form-control" autocomplete="off"> </textarea>
                 </div>
+                <input type="submit" value="提交" class="btn btn-default">
             </form>
-            <input type="submit" value="提交" class="btn btn-default">
 
         </div>
     </div>

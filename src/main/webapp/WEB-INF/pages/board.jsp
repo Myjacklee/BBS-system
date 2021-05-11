@@ -135,13 +135,19 @@
     <h2>帖子标题：${board.board_title}</h2>
     <div class="row board">
         <div class="col-md-3 text-center board_owner_information">
-            <img src="${pageContext.request.contextPath}/images/chatHead.jpg" class="img-thumbnail" alt="头像">
+            <c:if test="${board.headURL==null}">
+                <img src="${pageContext.request.contextPath}/images/chatHead.jpg" class="img-thumbnail" alt="头像">
+            </c:if>
+            <c:if test="${board.headURL!=null}">
+                <img src="${pageContext.request.contextPath}/uploads/${board.headURL}" class="img-thumbnail" alt="头像">
+            </c:if>
+
             <h3>${board.nickname}</h3>
             <div class="row">
-                <div class="col-md-6 board_num">
-                    <p><span class="glyphicon glyphicon-pencil"></span> 发帖数：99+</p>
-                </div>
-                <div class="col-md-6 user_home">
+<%--                <div class="col-md-6 board_num">--%>
+<%--                    <p><span class="glyphicon glyphicon-pencil"></span> 发帖数：99+</p>--%>
+<%--                </div>--%>
+                <div class="col-md-12 user_home">
                     <a href="${pageContext.request.contextPath}/home/${board.uid}"><p><span class="glyphicon glyphicon-home"></span> 个人主页</p></a>
                 </div>
             </div>
@@ -165,11 +171,16 @@
         <tr id="${reply.floor}">
             <div class="row board" id="${reply.floor}">
                 <div class="col-md-3 text-center board_owner_information">
-                    <img src="${pageContext.request.contextPath}/images/chatHead.jpg" class="img-thumbnail" alt="头像">
+                    <c:if test="${reply.headURL==null}">
+                        <img src="${pageContext.request.contextPath}/images/chatHead.jpg" class="img-thumbnail" alt="头像">
+                    </c:if>
+                    <c:if test="${reply.headURL!=null}">
+                        <img src="${pageContext.request.contextPath}/uploads/${reply.headURL}" class="img-thumbnail" alt="头像">
+                    </c:if>
                     <h3>${reply.nickname}</h3>
                     <div class="row">
                         <div class="col-md-6 board_num">
-                            <p><span class="glyphicon glyphicon-pencil"></span> 发帖数：99+</p>
+                            <p><span class="glyphicon glyphicon-pencil"></span> 发帖数：<c:if test="${reply.senderBoardNum!=null}">${reply.senderBoardNum}</c:if><c:if test="${reply.senderBoardNum==null}">0</c:if></p>
                         </div>
                         <div class="col-md-6 user_home">
                             <a href="${pageContext.request.contextPath}/home/${reply.uid}"><p><span class="glyphicon glyphicon-home"></span> 个人主页</p></a>

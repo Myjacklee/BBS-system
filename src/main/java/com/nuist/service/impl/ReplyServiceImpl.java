@@ -44,6 +44,11 @@ public class ReplyServiceImpl implements ReplyService {
         message.setTarget_uid(targetUid);
         message.setMessage_time(reply.getReply_time());
         messageDao.addMessage(message);
+        Integer targetFloorUid=replyDao.findUidByBoardIdAndFloor(reply.getBoard_id(),reply.getReply_target_floor());
+        if(targetFloorUid!=null){
+            message.setTarget_uid(targetFloorUid);
+            messageDao.addMessage(message);
+        }
         return 1;
     }
 

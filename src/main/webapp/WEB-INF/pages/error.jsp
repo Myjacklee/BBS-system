@@ -30,7 +30,7 @@
         }
     </style>
 </head>
-<%@include file="navbar.jsp"%>
+<%--<%@include file="navbar.jsp"%>--%>
 <body>
 <div class="container">
     <div class="row  content">

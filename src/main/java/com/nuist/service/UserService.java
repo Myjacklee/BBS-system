@@ -16,6 +16,6 @@ public interface UserService {
     public Integer updateUser(User user);
     //按uid进行查找用户
     public User findUserByUid(Integer uid);
-
+    public Integer setHeadURL(Integer uid,String url);
 
 }

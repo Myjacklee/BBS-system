@@ -48,6 +48,10 @@ public class UserServiceImpl implements UserService {
         return userDao.findUserByUid(uid);
     }
 
+    @Override
+    public Integer setHeadURL(Integer uid, String url) {
+        return userDao.setHeadURL(uid,url);
+    }
 
 
 }
