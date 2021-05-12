@@ -36,6 +36,9 @@ public class MessageController {
     @ResponseBody
     public Integer getMessage(HttpSession session, Model model){
         Integer uid=(Integer) session.getAttribute("uid");
+        if(uid==null){
+            return 0;
+        }
         return messageService.getMessageNumByUid(uid);
     }
 }
