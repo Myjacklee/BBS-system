@@ -68,6 +68,9 @@
                     });
 
             });
+            $('#selectImg').change(function () {
+                $("#headImg").attr("src",URL.createObjectURL($(this)[0].files[0]));
+            });
         });
 
 
@@ -100,20 +103,24 @@
     </div>
 
     <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <h2>个人头像修改</h2>
+        </div>
         <c:if test="${message!=null}">
             <div class="alert alert-info" >${message}</div>
         </c:if>
-        <div class="col-md-4 col-md-offset-4">
-            <h2>个人头像修改</h2>
+        <div class="col-md-2 col-md-offset-4">
             <form id="userHeadImage" method="post" action="${pageContext.request.contextPath}/manage/upload" enctype="multipart/form-data">
                 <div class="form-group">
-                    <label>请选择头像</label><input  name="userHead" type="file"  /><br>
-                    <input type="submit" value="点击上传" class="btn btn-primary"/>
+                    <label>请选择头像</label><input  name="userHead" type="file" id="selectImg" /><br>
+                    <input  type="submit" value="点击上传" class="btn btn-primary"/>
                 </div>
 
             </form>
         </div>
-
+        <div class="col-md-2">
+            <img hidden src="${pageContext.request.contextPath}/uploads/${userInformation.headURL}" alt=""  class="img-thumbnail"  style="margin-left: 20px;width: 150px;height: 150px" id="headImg">
+        </div>
     </div>
 
 </div>

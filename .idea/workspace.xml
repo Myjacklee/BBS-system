@@ -8,10 +8,10 @@
   <component name="ChangeListManager">
     <list default="true" id="ec1f2385-2dc6-490f-98db-0252c283a594" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nuist/controller/MessageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nuist/controller/MessageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resource/springMVC.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resource/springMVC.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/springMVC.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/springMVC.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/springMVC.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/springMVC.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/manageNavbar.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/manageNavbar.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/manageUserInformation.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/manageUserInformation.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/pages/manageNavbar.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/pages/manageNavbar.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/pages/manageUserInformation.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/pages/manageUserInformation.jsp" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -109,7 +109,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Tomcat Server.Tomcat 6.0.53">
+  <component name="RunManager" selected="JUnit.testFriendRecommend.test">
     <configuration name="testAOP.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SSM" />
       <option name="PACKAGE_NAME" value="" />
@@ -331,10 +331,10 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.testFriendRecommend.test" />
         <item itemvalue="JUnit.testMybatis.run3" />
         <item itemvalue="JUnit.testMybatis.run2" />
         <item itemvalue="JUnit.testMybatis.run1" />
-        <item itemvalue="JUnit.testFriendRecommend.test" />
         <item itemvalue="JUnit.testAOP.test" />
       </list>
     </recent_temporary>
@@ -372,7 +372,12 @@
       <workItem from="1620529106166" duration="2254000" />
       <workItem from="1620636124467" duration="22188000" />
       <workItem from="1620729620873" duration="7180000" />
-      <workItem from="1620831696135" duration="1448000" />
+      <workItem from="1620831696135" duration="2580000" />
+      <workItem from="1620915077014" duration="4146000" />
+      <workItem from="1620976308107" duration="1334000" />
+      <workItem from="1621259923526" duration="1191000" />
+      <workItem from="1621602236516" duration="585000" />
+      <workItem from="1622877627043" duration="607000" />
     </task>
     <servers />
   </component>
